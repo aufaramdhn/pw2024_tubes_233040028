@@ -35,7 +35,7 @@ function login($data)
         if ($user['password'] === $password) {
             $_SESSION['login'] = true;
             $_SESSION['id'] = $user['id'];
-            header("Location: index.php");
+            header("Location: ../index.php");
             exit;
         }
     }
