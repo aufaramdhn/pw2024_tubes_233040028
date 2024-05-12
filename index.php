@@ -2,10 +2,10 @@
 
 require_once('function.php');
 
-if (!isset($_SESSION['login'])) {
-    header("Location: login.php");
-    exit;
-}
+// if (!isset($_SESSION['login'])) {
+//     header("Location: login.php");
+//     exit;
+// }
 
 ?>
 
@@ -35,18 +35,20 @@ if (!isset($_SESSION['login'])) {
                 </ul>
             </nav>
             <div class="profile">
+                <div class="toggle-dropdown">
+                    <button>X</button>
+                </div>
                 <?php if (isset($_SESSION['login'])) :  ?>
                     <div class="dropdown">
                         <div class="dropdown-content">
-                            <ul>
-                                <li><a href="">Logout</a></li>
-                                <li><a href="">Logout</a></li>
-                                <li><a href="">Logout</a></li>
+                            <a href="">Logout</a>
+                            <a href="">Logout</a>
+                            <a href="">Logout</a>
                             </ul>
                         </div>
                     </div>
                 <?php else : ?>
-                    <a href="">Login</a>
+                    <a href="auth/login.php">Login</a>
                 <?php endif ?>
             </div>
         </div>
@@ -171,6 +173,7 @@ if (!isset($_SESSION['login'])) {
             <p>&copy; 2024 FOOD. All Rights Reserved.</p>
         </div>
     </footer>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
