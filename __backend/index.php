@@ -26,15 +26,40 @@
             </ul>
         </div>
         <a href="" class="logout">Logout</a>
+        <div class="nav-toggle">
+            <button>
+                <p>X</p>
+            </button>
+        </div>
     </div>
     <div class="main-page">
         <div class="header">
             <h1>Dashboard</h1>
         </div>
         <div class="content">
-            <p>Selamat datang di halaman admin. Silahkan pilih menu yang tersedia di sebelah kiri untuk mengelola data user, data menu, dan data order.</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>admin</td>
+                        <td>admin@mail.com</td>
+                        <td>admin</td>
+                        <td>delete</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
+
 </body>
 
 </html>
