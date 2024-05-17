@@ -17,6 +17,7 @@ require_once('function.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
 
 <body>
@@ -30,12 +31,16 @@ require_once('function.php');
                     <li><a href="">Home</a></li>
                     <li><a href="">About</a></li>
                     <li><a href="">Services</a></li>
-                    <li><a href="">Menu</a></li>
+                    <li><a href="view/menu.php">Menu</a></li>
                     <li><a href="">Contact Us</a></li>
                 </ul>
             </nav>
             <div class="profile">
+                <div class="cart">
+                    C
+                </div>
                 <div class="toggle-dropdown">
+                    <img src="https://source.unsplash.com/35x35/?nature,water" alt="">
                     <button>X</button>
                 </div>
                 <?php if (isset($_SESSION['login'])) :  ?>
@@ -160,13 +165,32 @@ require_once('function.php');
                         <li><a href="">Contact Us</a></li>
                     </ul>
                 </div>
-                <div class="footer-social">
+                <div class="footer-menu">
                     <ul>
-                        <li><a href="">Facebook</a></li>
-                        <li><a href="">Instagram</a></li>
-                        <li><a href="">Twitter</a></li>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Services</a></li>
+                        <li><a href="">Menu</a></li>
+                        <li><a href="">Contact Us</a></li>
                     </ul>
                 </div>
+                <div class="footer-menu">
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Services</a></li>
+                        <li><a href="">Menu</a></li>
+                        <li><a href="">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="footer-social">
+                <ul>
+                    <li><a href="">Facebook</a></li>
+                    <li><a href="">Instagram</a></li>
+                    <li><a href="">Twitter</a></li>
+                </ul>
             </div>
         </div>
         <div class="copyright">
@@ -174,6 +198,9 @@ require_once('function.php');
         </div>
     </footer>
     <script src="assets/js/script.js"></script>
+    <script>
+        feather.replace();
+    </script>
 </body>
 
 </html>
