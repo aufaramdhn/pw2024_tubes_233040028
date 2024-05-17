@@ -14,32 +14,47 @@ body {
 
 table {
   width: 100%;
-  table-layout: fixed;
   border-collapse: collapse;
-  /* border: 1px solid #ddd; */
   margin-top: 20px;
 }
 
-table tr {
+table tr th,
+table tr td {
   border: 1px solid #ddd;
+  padding: 8px;
 }
 
-th,
-td {
-  padding: 10px;
-  /* border-bottom: 1px solid #ddd; */
-}
-
-th {
+table tr th {
   background-color: #f2f2f2;
+  text-align: left;
+}
+
+.header-text {
+  font-size: 1rem;
+  margin-top: 20px;
 }
 
 /* End Custom CSS */
 
-.main-page {
+.wrap-content {
   /* background-color: red; */
   width: 100%;
-  padding: 20px 40px;
+}
+
+.wrap-content header {
+  background-color: red;
+  height: 80px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.topbar {
+  padding: 20px 60px;
+}
+
+.content {
+  padding: 20px 60px;
 }
 
 .sidebar {

@@ -14,9 +14,6 @@
         <div class="title">
             <h1>Admin Page</h1>
         </div>
-        <div class="profile">
-            <p>Welcome, Admin</p>
-        </div>
         <div class="nav-list">
             <ul>
                 <li><a href="">Dashboard</a></li>
@@ -32,11 +29,16 @@
             </button>
         </div>
     </div>
-    <div class="main-page">
-        <div class="header">
-            <h1>Dashboard</h1>
-        </div>
+    <div class="wrap-content">
+        <header>
+            <div class="topbar">
+                <h3>Admin Page</h3>
+            </div>
+        </header>
         <div class="content">
+            <div class="header-text">
+                <h1>Dashboard</h1>
+            </div>
             <table class="table">
                 <thead>
                     <tr>
@@ -48,6 +50,20 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>admin</td>
+                        <td>admin@mail.com</td>
+                        <td>admin</td>
+                        <td>delete</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>admin</td>
+                        <td>admin@mail.com</td>
+                        <td>admin</td>
+                        <td>delete</td>
+                    </tr>
                     <tr>
                         <td>1</td>
                         <td>admin</td>
