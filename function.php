@@ -7,6 +7,12 @@ $error = [
     'pesan' => ''
 ];
 
+define('BASE_URL', 'http://localhost/__backend/');
+
+function base_url($path = '')
+{
+    return BASE_URL . $path;
+}
 
 function koneksi()
 {

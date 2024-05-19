@@ -1,3 +1,5 @@
+<?php include('../function.php') ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,75 +8,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="<?= base_url('assets/style.css') ?>">
 </head>
 
 <body>
-    <div class="sidebar">
-        <div class="title">
-            <h1>Admin Page</h1>
-        </div>
-        <div class="nav-list">
-            <ul>
-                <li><a href="">Dashboard</a></li>
-                <li><a href="">Data User</a></li>
-                <li><a href="">Data Menu</a></li>
-                <li><a href="">Data Order</a></li>
-            </ul>
-        </div>
-        <a href="" class="logout">Logout</a>
-        <div class="nav-toggle">
-            <button>
-                <p>X</p>
-            </button>
-        </div>
-    </div>
-    <div class="wrap-content">
-        <header>
-            <div class="topbar">
-                <h3>Admin Page</h3>
-            </div>
-        </header>
-        <div class="content">
-            <div class="header-text">
-                <h1>Dashboard</h1>
-            </div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>admin</td>
-                        <td>admin@mail.com</td>
-                        <td>admin</td>
-                        <td>delete</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>admin</td>
-                        <td>admin@mail.com</td>
-                        <td>admin</td>
-                        <td>delete</td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>admin</td>
-                        <td>admin@mail.com</td>
-                        <td>admin</td>
-                        <td>delete</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+
+    <?php include('layouts/header.php'); ?>
+
+    <?php
+
+    $page = $_GET['page']; // To get the page
+
+    if ($page == null) {
+        $page = 'index'; // Set page to index, if not set
+    }
+    switch ($page) {
+
+        case 'index':
+            include('dashboard.php');
+            break;
+
+        case 'users':
+            include('users/users.php');
+            break;
+
+        case 'add_user':
+            include('users/add_user.php');
+            break;
+
+        case 'contact':
+            include('contact.php');
+            break;
+    }
+
+    ?>
+
+    <?php include('layouts/footer.php'); ?>
 
 </body>
 
