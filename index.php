@@ -17,7 +17,7 @@ require_once('function.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -58,6 +58,7 @@ require_once('function.php');
             </div>
         </div>
     </header>
+
     <section id="home" class="container">
         <div class="wrap-home">
             <div class="deskripsi-home">
@@ -65,8 +66,8 @@ require_once('function.php');
                 <p>Destinasi online Anda untuk memesan makanan favorit Anda dengan mudah dan cepat. Dengan kami, Anda tidak perlu lagi repot-repot keluar rumah atau menelepon restoran, karena semua pesanan Anda dapat diproses hanya dengan beberapa klik!</p>
                 <a href="" class="btn">Pilih Menu</a>
             </div>
-            <div class="photo-home">
-                <img src="https://source.unsplash.com/400x400/?nature,water" alt="" />
+            <div class="img-home">
+                <img src="/assets/picture/login.jpg" alt="" />
             </div>
         </div>
     </section>
@@ -103,7 +104,7 @@ require_once('function.php');
 
     <section id="menu" class="container">
         <div class="header-text">
-            <h1>Menu Kami</h1>
+            <h1>Our Menus</h1>
             <p>Pilih menu makanan favorit Anda dan nikmati makanan lezat yang kami sediakan!</p>
         </div>
         <div class="wrap-menu">
@@ -155,6 +156,14 @@ require_once('function.php');
             <div class="wrap-footer">
                 <div class="footer-logo">
                     <h1>FOOD</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolorem repellendus, atque aut mollitia reprehenderit temporibus voluptatem in perspiciatis delectus?</p>
+                    <div class="footer-social">
+                        <ul>
+                            <li><a href=""><i class="ri-facebook-circle-line"></i></a></li>
+                            <li><a href=""><i class="ri-instagram-line"></i></a></li>
+                            <li><a href=""><i class="ri-twitter-x-line"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="footer-menu">
                     <ul>
@@ -183,14 +192,6 @@ require_once('function.php');
                         <li><a href="">Contact Us</a></li>
                     </ul>
                 </div>
-            </div>
-            <hr>
-            <div class="footer-social">
-                <ul>
-                    <li><a href="">Facebook</a></li>
-                    <li><a href="">Instagram</a></li>
-                    <li><a href="">Twitter</a></li>
-                </ul>
             </div>
         </div>
         <div class="copyright">

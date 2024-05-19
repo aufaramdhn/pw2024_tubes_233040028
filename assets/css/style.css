@@ -2,11 +2,49 @@
 @import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
 
 :root {
-  --background-color: rgb(250, 246, 245);
-  --primary-color: rgb(187, 74, 68);
-  --secondary-color: rgb(225, 146, 142);
-  --accent-color: rgb(227, 110, 104);
-  --text-color: rgb(13, 8, 7);
+  /* --background-color: rgb(250, 246, 245); */
+
+  --primary-100-color: #ffece6;
+  --primary-200-color: #fed9cc;
+  --primary-300-color: #fec6b3;
+  --primary-400-color: #feb399;
+  --primary-500-color: #fea080;
+  --primary-600-color: #fd8d66;
+  --primary-700-color: #fd7a4d;
+  --primary-800-color: #fd6733;
+  --primary-900-color: #fc541a;
+
+  --secondary-100-color: #fc4100;
+  --secondary-200-color: #e33b00;
+  --secondary-300-color: #ca3400;
+  --secondary-400-color: #b02e00;
+  --secondary-500-color: #972700;
+  --secondary-600-color: #7e2100;
+  --secondary-700-color: #651a00;
+  --secondary-800-color: #4c1300;
+  --secondary-900-color: #320d00;
+
+  --white-100-color: #e8e8e8;
+  --white-200-color: #d0d0d0;
+  --white-300-color: #b9b9b9;
+  --white-400-color: #a1a1a1;
+  --white-500-color: #8a8a8a;
+  --white-600-color: #737373;
+  --white-700-color: #5b5b5b;
+  --white-800-color: #444444;
+  --white-900-color: #2c2c2c;
+
+  --black-100-color: #151515;
+  --black-200-color: #131313;
+  --black-300-color: #111111;
+  --black-400-color: #0f0f0f;
+  --black-500-color: #0d0d0d;
+  --black-600-color: #0b0b0b;
+  --black-700-color: #080808;
+  --black-800-color: #060606;
+  --black-900-color: #040404;
+
+  --white-color: #fbfbfb;
 }
 
 * {
@@ -17,6 +55,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
+  overflow-x: hidden;
 }
 
 /* custom css */
@@ -27,15 +66,16 @@ body {
 
 .btn {
   padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
+  background-color: var(--primary-900-color);
+  color: var(--white-color);
   text-decoration: none;
   border-radius: 5px;
+  transition: all 0.3s;
 }
 
 .btn:hover {
-  background-color: #f1f1f1;
-  color: #333;
+  background-color: var(--secondary-100-color);
+  color: var(--white-color);
 }
 
 .vertical-line {
@@ -47,7 +87,7 @@ body {
   display: none;
   justify-content: center;
   position: absolute;
-  background-color: red;
+  /* background-color: red; */
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   width: 200px;
   top: 88px;
@@ -73,10 +113,14 @@ body {
 }
 
 .card {
-  background-color: #f9f9f9;
+  background-color: var(--primary-100-color);
   padding: 20px;
   margin: 20px 0;
   border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.card:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -110,7 +154,7 @@ button {
 /* Navbar */
 
 header {
-  background-color: #333;
+  background-color: var(--primary-700-color);
   color: #fff;
   padding: 10px 0;
   text-align: center;
@@ -119,6 +163,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .header-nav .container {
@@ -197,11 +242,11 @@ nav ul li a:hover:before {
 /* Home */
 
 #home {
-  margin-top: 50px;
+  position: relative;
 }
 
 .wrap-home {
-  height: 70vh;
+  height: 90vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -221,13 +266,29 @@ nav ul li a:hover:before {
   margin-bottom: 2rem;
 }
 
+.img-home {
+  position: absolute;
+  top: -170px;
+  right: -180px;
+  background-color: var(--primary-200-color);
+  border-radius: 100%;
+  padding: 20px;
+}
+
+.img-home img {
+  border-radius: 100%;
+  width: 900px;
+  height: 900px;
+}
+
 /* End Home */
 
 /* Menu Count */
 
 #menu-count {
-  /* margin-top: 50px; */
-  background: var(--accent-color);
+  margin-top: 50px;
+  position: relative;
+  background: var(--primary-100-color);
   padding: 40px 0;
 }
 
@@ -266,14 +327,15 @@ nav ul li a:hover:before {
 /* About */
 
 #about {
-  margin-top: 50px;
+  position: relative;
+  background-color: var(--primary-100-color);
 }
 
 .wrap-about {
+  padding: 150px 0;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 100vh;
 }
 
 .wrap-about .deskripsi-about {
@@ -303,6 +365,7 @@ nav ul li a:hover:before {
   justify-content: space-between;
   align-items: center;
   height: 70vh;
+  gap: 20px;
 }
 
 .card-img {
@@ -323,7 +386,7 @@ nav ul li a:hover:before {
 /* Footer */
 
 footer {
-  background-color: #333;
+  background-color: var(--primary-400-color);
   color: #fff;
 }
 
@@ -334,16 +397,37 @@ footer {
   align-items: center;
 }
 
+.footer-logo {
+  width: 20%;
+}
+
+.footer-logo p {
+  margin: 20px 0;
+  text-align: justify;
+}
+
+.footer-social ul {
+  margin: 10px 0;
+}
+
 .footer-social ul {
   display: flex;
   justify-content: left;
   align-items: center;
 }
 
+.footer-social ul li a {
+  padding: 6px 8px;
+  background-color: var(--primary-900-color);
+  border-radius: 4px;
+  margin-right: 8px;
+  font-size: 1.8rem;
+}
+
 .footer-menu ul li,
 .footer-social ul li {
   list-style: none;
-  margin: 8px 8px;
+  margin: 8px 0;
 }
 
 .footer-menu ul li a,
@@ -353,9 +437,88 @@ footer {
 }
 
 .copyright {
-  background-color: rgba(74, 74, 74, 0.8);
+  background-color: var(--primary-700-color);
   padding: 14px 0;
   text-align: center;
 }
 
 /* End Footer */
+
+/* ------------------------------------ */
+
+/* VIEW PROFILE */
+
+#profile {
+  position: relative;
+  padding: 80px 0;
+}
+
+.wrap-profile {
+  display: flex;
+  gap: 20px;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-img {
+  width: 100%;
+}
+
+.profile-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.profile-nav a {
+  font-size: 1rem;
+  text-decoration: none;
+  padding: 14px 22px;
+  transition: all 0.3s;
+  color: var(--black-100-color);
+}
+
+.profile-nav a:hover {
+  background-color: var(--primary-100-color);
+  border-radius: 8px;
+}
+
+.profile-content {
+  flex: 1;
+  padding-left: 40px;
+}
+
+.header-profile h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.wrap-form {
+  display: flex;
+  gap: 60px;
+}
+
+.form-col {
+  flex: 1;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 10px;
+}
+
+.form-group input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
