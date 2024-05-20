@@ -1,4 +1,5 @@
-<?php include('../function.php') ?>
+<?php
+include('../function.php') ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,42 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
 
-    <link rel="stylesheet" href="<?= base_url('assets/style.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('__backend/assets/style.css') ?>">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
 <body>
 
-    <?php include('layouts/header.php'); ?>
+    <?php include(BASE_PATH . '__backend\\layouts\\header.php'); ?>
 
-    <?php
+    <?php include(BASE_PATH . '__backend\\routing.php'); ?>
 
-    $page = $_GET['page']; // To get the page
+    <?php include(BASE_PATH . '__backend\\layouts\\footer.php'); ?>
 
-    if ($page == null) {
-        $page = 'index'; // Set page to index, if not set
-    }
-    switch ($page) {
-
-        case 'index':
-            include('dashboard.php');
-            break;
-
-        case 'users':
-            include('users/users.php');
-            break;
-
-        case 'add_user':
-            include('users/add_user.php');
-            break;
-
-        case 'contact':
-            include('contact.php');
-            break;
-    }
-
-    ?>
-
-    <?php include('layouts/footer.php'); ?>
+    <script src="<?= base_url('__backend/assets/script.js') ?>"></script>
 
 </body>
 
