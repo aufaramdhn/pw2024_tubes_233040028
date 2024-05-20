@@ -6,22 +6,38 @@
 <div class="wrap">
     <div class="sidebar">
         <div class="nav-list">
-            <ul>
-                <li><a href="index.php?page=index">Dashboard</a></li>
-                <li><a href="index.php?page=users">Data User</a></li>
-                <li><a href="">Data Menu</a></li>
-                <li><a href="">Data Order</a></li>
-            </ul>
+            <a href="index.php?page=index">
+                <i class="ri-gallery-view-2"></i>
+                <span class="nav-title">
+                    Dashboard
+                </span>
+            </a>
+            <a href="index.php?page=users">
+                <i class="ri-user-line"></i>
+                <span class="nav-title">
+                    Users
+                </span>
+            </a>
+            <a href="">
+                <i class="ri-file-list-2-line"></i>
+                <span class="nav-title">
+                    Menus
+                </span>
+            </a>
+            <a href="">
+                <i class="ri-shopping-cart-2-line"></i>
+                <span class="nav-title">
+                    Orders
+                </span>
+            </a>
         </div>
-        <a href="" class="logout">Logout</a>
-        <div class="nav-toggle">
-            <button>
-                <p>X</p>
-            </button>
-        </div>
+        <a href="" class="logout">
+            <i class="ri-logout-box-line"></i>
+            <span class="nav-title">Logout</span>
+        </a>
+        <button class="nav-toggle" id="navToggle">
+            <i class="ri-arrow-left-s-line"></i>
+        </button>
     </div>
     <div class="wrap-content">
         <div class="content">
-            <div class="header-text">
-                <h1>Dashboard</h1>
-            </div>
