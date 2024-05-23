@@ -18,13 +18,13 @@
                     Users
                 </span>
             </a>
-            <a href="">
+            <a href="index.php?page=menu">
                 <i class="ri-file-list-2-line"></i>
                 <span class="nav-title">
                     Menus
                 </span>
             </a>
-            <a href="">
+            <a href="index.php?page=orders">
                 <i class="ri-shopping-cart-2-line"></i>
                 <span class="nav-title">
                     Orders

@@ -20,7 +20,19 @@ switch ($page) {
         include('users/add_user.php');
         break;
 
-    case 'contact':
-        include('contact.php');
+    case 'edit_user':
+        include('users/edit_user.php');
+        break;
+
+    case 'menu':
+        include('menu/menu.php');
+        break;
+
+    case 'add_menu':
+        include('menu/add_menu.php');
+        break;
+
+    case 'orders':
+        include('orders/orders.php');
         break;
 }
