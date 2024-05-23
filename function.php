@@ -26,16 +26,17 @@ function query($query)
 
     $result = mysqli_query($conn, $query);
 
-    if (mysqli_num_rows($result) == 1) {
-        return mysqli_fetch_assoc($result);
-    }
+    // $rows = [];
+    // if (mysqli_num_rows($result) == 1) {
+    //     $rows = mysqli_fetch_assoc($result);
+    // } else {
+    //     while ($row = mysqli_fetch_assoc($result)) {
+    //         $rows[] = $row;
+    //     }
+    // }
 
-    $rows = [];
-    while ($row = mysqli_fetch_assoc($result)) {
-        $rows[] = $row;
-    }
 
-    return $rows;
+    return $result;
 }
 
 function login($data)
@@ -130,17 +131,17 @@ function insert_data($table, $datas = array())
     $data = [];
 
     foreach ($datas as $key => $value) {
-        $field[] = mysqli_real_escape_string($conn, $key);
+        $field[] = htmlspecialchars($key);
 
         if ($key == 'password') {
             $value = password_hash($value, PASSWORD_DEFAULT);
         }
 
-        $data[] = "'" . mysqli_real_escape_string($conn, $value) . "'";
+        $data[] = "'" . htmlspecialchars($value) . "'";
     }
 
 
-    $sql = "INSERT INTO " . mysqli_real_escape_string($conn, $table) . " (";
+    $sql = "INSERT INTO " . htmlspecialchars($table) . " (";
     $sql .= implode(", ", $field);
     $sql .= ") VALUES (";
     $sql .= implode(", ", $data);
