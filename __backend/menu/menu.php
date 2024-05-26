@@ -43,7 +43,7 @@ endif;
             <tr>
                 <td><?= $id++ ?></td>
                 <td><?= $menu['menu_name'] ?></td>
-                <td><?= $menu['menu_price'] ?></td>
+                <td>Rp. <?= number_format($menu['menu_price']) ?></td>
                 <td>
                     <a href="index.php?page=edit_menu&menu_id=<?= $menu['menu_id'] ?>">Edit</a>
                     <a href="index.php?page=menu&menu_id=<?= $menu['menu_id'] ?>">Delete</a>

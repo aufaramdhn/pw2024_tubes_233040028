@@ -3,8 +3,8 @@
 
 $users = query("SELECT * FROM menu_order");
 
-if (isset($_GET['id'])) :
-    delete_data('menu_order', ['id' => $_GET['id']]);
+if (isset($_GET['user_id'])) :
+    delete_data('menu_order', ['user_id' => $_GET['user_id']]);
 endif;
 
 ?>
@@ -28,10 +28,10 @@ endif;
     <thead>
         <tr>
             <th>No</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>Email</th>
-            <th>Role</th>
+            <th>Name</th>
+            <th>Menu Name</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -44,11 +44,11 @@ endif;
                 <td><?= $id++ ?></td>
                 <td><?= $user['username'] ?></td>
                 <td><?= $user['password'] ?></td>
-                <td><?= $user['email'] ?></td>
-                <td><?= $user['id_role'] ?></td>
+                <td><?= $user['user_email'] ?></td>
+                <td><?= $user['role_id'] ?></td>
                 <td>
-                    <a href="index.php?page=edit_user&id=<?= $user['id'] ?>">Edit</a>
-                    <a href="index.php?page=users&id=<?= $user['id'] ?>">Delete</a>
+                    <a href="index.php?page=edit_user&user_id=<?= $user['user_id'] ?>">Edit</a>
+                    <a href="index.php?page=users&user_id=<?= $user['user_id'] ?>">Delete</a>
                 </td>
             </tr>
         <?php endforeach ?>
