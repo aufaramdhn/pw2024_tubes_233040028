@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap");
 
+:root {
+  --primary-100-color: #ffece6;
+  --primary-200-color: #fed9cc;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -91,7 +96,7 @@ table tr th {
 }
 
 header {
-  background-color: lightblue;
+  background-color: var(--primary-200-color);
   width: 100%;
   position: absolute;
   top: 0;
@@ -251,3 +256,46 @@ header {
 }
 
 /* EndAdd User */
+
+/* DASHBOARD */
+
+.wrap-dashboard {
+  display: flex;
+  gap: 20px;
+}
+
+.wrap-dashboard .card {
+  flex: 1;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card .card-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card .card-content i {
+  font-size: 6rem;
+  color: #3498db;
+}
+
+.card-content .wrap-card-text h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.card-content .wrap-card-text p {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.card-content .wrap-card-text a {
+  text-decoration: none;
+  color: #3498db;
+  font-size: 1.2rem;
+}
+
+/* END DASHBOARD */

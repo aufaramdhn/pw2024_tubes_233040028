@@ -18,7 +18,7 @@
                     Users
                 </span>
             </a>
-            <a href="index.php?page=menu">
+            <a href="index.php?page=menus">
                 <i class="ri-file-list-2-line"></i>
                 <span class="nav-title">
                     Menus
