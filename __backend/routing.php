@@ -24,7 +24,7 @@ switch ($page) {
         include('users/edit_user.php');
         break;
 
-    case 'menu':
+    case 'menus':
         include('menu/menu.php');
         break;
 
