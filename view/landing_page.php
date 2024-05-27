@@ -41,51 +41,65 @@
         </div>
 </section>
 
-<section id="menu" class="container">
+<section id="menu-page">
     <div class="header-text">
         <h1>Our Menus</h1>
         <p>Pilih menu makanan favorit Anda dan nikmati makanan lezat yang kami sediakan!</p>
     </div>
-    <div class="wrap-menu">
-        <div class="card">
-            <div class="card-img">
-                <img src="https://source.unsplash.com/300x300/?food" alt="" />
-            </div>
-            <div class="card-content">
-                <h3>Menu 1</h3>
-                <p>$13</p>
-                <a href="" class="btn">Pesan</a>
-            </div>
+    <div class="container">
+        <div class="wrap-menu">
+            <?php
+            $menus = array_query("SELECT * FROM menu ORDER BY RAND() LIMIT 4");
+
+            shuffle($menus);
+            foreach ($menus as $menu) : ?>
+                <div class="card">
+                    <div class="card-img">
+                        <!-- <img src="https://source.unsplash.com/300x300/?food" alt="" /> -->
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">
+                            <h3><?= $menu['menu_name'] ?></h3>
+                            <span>Rp. <?= number_format($menu['menu_price']) ?></span>
+                        </div>
+                        <?php if (isset($_SESSION['login'])) { ?>
+                            <form action="proses/add_cart.php" method="POST">
+                                <button class="btn" type="submit" name="order" value="<?= $menu['menu_id'] ?>">Order</button>
+                            </form>
+                        <?php } else { ?>
+                            <button class="btn" onclick="alert('Silahkan Login terlebih dahulu')">Pesan</button>
+                        <?php } ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
-        <div class="card">
-            <div class="card-img">
-                <img src="https://source.unsplash.com/300x300/?food" alt="" />
-            </div>
-            <div class="card-content">
-                <h3>Menu 1</h3>
-                <p>$13</p>
-                <a href="" class="btn">Pesan</a>
-            </div>
+        <!-- <a class="btn btn-all-menu" href="index.php?page=menu">See all menu</a> -->
+    </div>
+
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="header-text">
+            <h1>Contact Us</h1>
+            <!-- <p>Hubungi kami jika Anda memiliki pertanyaan atau masalah terkait layanan kami. Kami akan dengan senang hati membantu Anda!</p> -->
         </div>
-        <div class="card">
-            <div class="card-img">
-                <img src="https://source.unsplash.com/300x300/?food" alt="" />
-            </div>
-            <div class="card-content">
-                <h3>Menu 1</h3>
-                <p>$13</p>
-                <a href="" class="btn">Pesan</a>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-img">
-                <img src="https://source.unsplash.com/300x300/?food" alt="" />
-            </div>
-            <div class="card-content">
-                <h3>Menu 1</h3>
-                <p>$13</p>
-                <a href="" class="btn">Pesan</a>
-            </div>
+        <div class="wrap-contact">
+            <form action="">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" type="text" cols="4" rows="4" contenteditable="true"></textarea>
+                </div>
+                <button type="submit" name="login" class="btn">Login</button>
+            </form>
         </div>
     </div>
 </section>
