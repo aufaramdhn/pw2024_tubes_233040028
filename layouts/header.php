@@ -1,3 +1,13 @@
+<?php
+
+if (isset($_SESSION['user_id'])) {
+    $cart = array_query("SELECT * FROM cart WHERE user_id = {$_SESSION['user_id']}");
+} else {
+    $cart = [];
+}
+
+?>
+
 <header class="header-nav">
     <div class="container">
         <div class="logo">
@@ -12,23 +22,29 @@
                 <li><a href="<?= base_url('#') ?>">Contact Us</a></li>
             </ul>
         </nav>
-        <div class="profile">
-            <div class="cart">
-                <a href="<?= base_url('index.php?page=cart') ?>">c</a>
-            </div>
-            <div class="toggle-dropdown">
-                <img src="https://source.unsplash.com/35x35/?nature,water" alt="">
-                <button>X</button>
-            </div>
+        <div class="profile-header">
             <?php if (isset($_SESSION['login'])) :  ?>
-                <div class="dropdown">
-                    <div class="dropdown-content">
-                        <a href="">Logout</a>
-                        <a href="">Logout</a>
-                        <a href="">Logout</a>
-                        </ul>
+                <div class="cart">
+                    <a href="<?= base_url('index.php?page=cart') ?>"><i class="ri-shopping-cart-line"></i></a>
+                    <div class="cart-count">
+                        <?= count($cart) ?>
                     </div>
                 </div>
+                <div class="dropdown">
+                    <img src="https://source.unsplash.com/35x35/?nature,water" alt="">
+                    <i class="ri-arrow-down-s-line"></i>
+                </div>
+                <ul class="dropdown-menu">
+                    <?php if ($_SESSION['role'] == 'admin') { ?>
+                        <li><a href="index.php?page=admin">Admin</a></li>
+                    <?php } ?>
+                    <li>
+                        <a href="index.php?page=profile">Profile</a>
+                    </li>
+                    <li>
+                        <a href="index.php?page=logout">Logout</a>
+                    </li>
+                </ul>
             <?php else : ?>
                 <a href="auth/login.php">Login</a>
             <?php endif ?>
@@ -36,3 +52,16 @@
     </div>
 </header>
 <main>
+    <?php
+
+    if (isset($_SESSION['message'])) { ?>
+        <div class="alert">
+            <div class="alert-content">
+                <span id="alert"><?= $_SESSION['message'] ?></span>
+                <button><i class="ri-close-large-line"></i></button>
+            </div>
+        </div>
+        </script>
+    <?php
+        unset($_SESSION['message']);
+    } ?>
