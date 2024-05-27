@@ -1,0 +1,131 @@
+/* Menu */
+
+#menu {
+  margin: 100px 0;
+}
+
+.wrap-menu .btn-all-menu {
+  margin-top: 100px;
+  width: 25%;
+}
+
+.btn-all-menu a {
+  text-align: center;
+  text-decoration: none;
+  color: var(--white-color);
+}
+
+#menu-page {
+  margin: 100px 0;
+  /* display: flex;
+    justify-content: center;
+    flex-direction: column; */
+}
+
+.wrap-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  /* height: 70vh; */
+  gap: 30px;
+}
+
+.search-menu {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.search-menu input {
+  width: 50%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.search-menu button,
+.search-menu label {
+  padding: 10px 20px;
+  background-color: var(--primary-900-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 12px;
+}
+
+.filter {
+  display: none;
+  background-color: var(--primary-100-color);
+  padding: 10px 60px;
+  top: 22px;
+  right: 20%;
+  position: absolute;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+}
+
+.filter a {
+  text-decoration: none;
+  color: var(--black-100-color);
+}
+
+.search-menu button i {
+  font-size: 1.1rem;
+}
+
+.wrap-menu-category {
+  display: flex;
+  justify-content: left;
+  margin: 20px 0 0 10px;
+  /* align-items: center; */
+  /* gap: 2px; */
+}
+
+.wrap-menu-category label {
+  font-size: 1rem;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.wrap-menu-category label:hover {
+  background-color: var(--primary-900-color);
+  color: var(--white-color);
+}
+
+.wrap-menu-category input {
+  display: none;
+}
+
+.card-img img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.card-content h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.card-content .card-title {
+  margin-bottom: 1.2rem;
+}
+
+/* End Menu */
