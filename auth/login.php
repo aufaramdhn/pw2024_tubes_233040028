@@ -6,6 +6,13 @@ if (isset($_POST['login'])) {
     $login = login($_POST);
 }
 
+// if (isset($_SESSION['message'])) {
+//     echo "<script>
+//         alert('$_SESSION[message]');
+//     </script>";
+//     // unset($_SESSION['message']);
+// }
+
 ?>
 
 <!DOCTYPE html>
