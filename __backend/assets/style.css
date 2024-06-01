@@ -3,6 +3,10 @@
 :root {
   --primary-100-color: #ffece6;
   --primary-200-color: #fed9cc;
+  --primary-800-color: #fd6733;
+  --primary-900-color: #fc541a;
+  --secondary-100-color: #fc4100;
+  --black-100-color: #151515;
 }
 
 * {
@@ -69,15 +73,56 @@ table tr th {
 
 .btn {
   padding: 10px 20px;
-  background-color: #3498db;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-small {
+  padding: 5px 10px;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+}
+
+.btn-warning {
+  background-color: #f39c12;
 }
 
 .btn:hover {
   background-color: #2980b9;
+}
+
+.alert {
+  position: fixed;
+  top: 100px;
+  right: 25px;
+  background-color: var(--primary-900-color);
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.alert-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px 0 0 5px;
+  margin-right: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.alert-content button {
+  color: var(--black-100-color);
+  margin-left: 16px;
+  font-size: 1.4rem;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
 }
 
 /* End Custom CSS */
@@ -96,7 +141,7 @@ table tr th {
 }
 
 header {
-  background-color: var(--primary-200-color);
+  background-color: var(--primary-800-color);
   width: 100%;
   position: absolute;
   top: 0;
@@ -128,7 +173,7 @@ header {
   display: flex;
   flex-direction: column;
   width: 289px;
-  background-color: #2c3e50;
+  background-color: #34495e;
   padding: 100px 0 30px 0;
   transition: all 0.3s;
 }
