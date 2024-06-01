@@ -2,10 +2,6 @@
 
 session_start();
 
-$error = [
-    'error' => '',
-    'pesan' => ''
-];
 
 define('BASE_URL', 'http://localhost/');
 define('BASE_PATH', __DIR__ . '\\');
@@ -26,18 +22,38 @@ function query($query)
 
     $result = mysqli_query($conn, $query);
 
-    // $rows = [];
-    // if (mysqli_num_rows($result) == 1) {
-    //     $rows = mysqli_fetch_assoc($result);
-    // } else {
-    //     while ($row = mysqli_fetch_assoc($result)) {
-    //         $rows[] = $row;
-    //     }
-    // }
-
+    mysqli_fetch_array($result);
 
     return $result;
 }
+
+function array_query($query)
+{
+    $conn = koneksi();
+
+    $result = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($result) == 1) {
+        $rows = mysqli_fetch_assoc($result);
+    } else {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $rows[] = $row;
+        }
+    }
+
+    return $rows;
+}
+
+function live_search_menu($table, $keyword)
+{
+
+    $query = "SELECT * FROM $table WHERE menu_name LIKE '%$keyword%' OR menu_price LIKE '%$keyword%'";
+
+    $result = mysqli_query(koneksi(), $query);
+
+    return $result;
+}
+
 
 function login($data)
 {
@@ -45,23 +61,29 @@ function login($data)
     $username = htmlspecialchars($data['username']);
     $password = htmlspecialchars($data['password']);
 
-    if ($user = query("SELECT * FROM user WHERE username = '$username'")) :
+    $user = array_query("SELECT * FROM user WHERE username = '$username'");
+
+    if ($user['username'] == $username) :
         if (password_verify($password, $user['password'])) :
             $_SESSION['login'] = true;
-            $_SESSION['id'] = $user['id'];
+            $_SESSION['user_id'] = $user['user_id'];
+            if ($user['role_id'] == 1) {
+                $_SESSION['role'] = 'admin';
+            } else {
+                $_SESSION['role'] = 'user';
+            }
+            if (isset($data['remember'])) {
+                setcookie('login', 'true', time() + (30 * 24 * 60 * 60), "/");
+            }
             header("Location: ../index.php");
             exit;
         else :
-            echo "<script>
-    alert('password salah!');
-    document.location.href = 'login.php';
-        </script>";
+            $_SESSION['message'] = 'Password salah!';
+            header("Location: login.php");
         endif;
     else :
-        echo "<script>
-    alert('username tidak ada!');
-    document.location.href = 'login.php';
-        </script>";
+        $_SESSION['message'] = 'Username tidak ditemukan!';
+        header("Location: login.php");
     endif;
 }
 
@@ -77,49 +99,86 @@ function register($data)
     $role = ($data['id_role']);
 
     if (empty($username) or empty($password) or  empty($cPassword) or empty($email)) {
-        echo "<script>
-      alert('Tolong isi semuanya');
-      document.location.href = 'register.php';
-      </script>";
+        $_SESSION['message'] = 'Tolong isi semua!';
+        header("Location: register.php");
         return false;
     }
 
-    if (query("SELECT * FROM user WHERE username = '$username'")) {
-        echo "<script>
-    alert('username atau passsword sudah ada');
-    document.location.href = 'register.php';
-    </script>";
+    if (array_query("SELECT * FROM user WHERE username = '$username'")) {
+        $_SESSION['message'] = 'Username sudah ada!';
+        header("Location: register.php");
         return false;
     }
 
     if ($password !== $cPassword) {
-        echo "<script>
-      alert('Password tidak sesuai');
-      document.location.href = 'register.php';
-      </script>";
+        $_SESSION['message'] = 'Password tidak sesuai!';
+        header("Location: register.php");
     }
 
     if (strlen($password) < 5) {
-        echo "<script>
-              alert('password terlalu pendek!');
-              document.location.href = 'register.php';
-            </script>";
+        $_SESSION['message'] = 'Password harus lebih dari 5 karakter!';
+        header("Location: register.php");
         return false;
     }
-
 
     $password_baru = password_hash($password, PASSWORD_DEFAULT);
 
     $query = "INSERT INTO user
                 VALUES
-              (NULL, '', '$username', '$email', '$password_baru', '$role'  )
+              (NULL, '', '', '$username', '$email', '$password_baru', '$role'  )
             ";
-    echo "<script>
-    alert('Akun berhasil dibuat!');
-    document.location.href = 'login.php';
-        </script>";
+    $_SESSION['message'] = 'Tolong isi semua!';
+
+    header("Location: login.php");
     mysqli_query($conn, $query) or die(mysqli_error($conn));
     return mysqli_affected_rows($conn);
+}
+
+function upload()
+{
+    $nama_file = $_FILES['image']['name'];
+    $tipe_file = $_FILES['image']['type'];
+    $ukuran_file = $_FILES['image']['size'];
+    $tmp_file = $_FILES['image']['tmp_name'];
+
+    $daftar_tipe_file = ['jpg', 'jpeg', 'png'];
+    $ekstensi_file = explode('.', $nama_file);
+    $ekstensi_file = strtolower(end($ekstensi_file));
+
+    if (!in_array($ekstensi_file, $daftar_tipe_file)) {
+        echo "<script>
+                alert('Yang anda pilih bukan image!');
+              </script>";
+        return false;
+    }
+
+    if ($tipe_file != 'image/jpeg' && $tipe_file != 'image/png') {
+        echo "<script>
+                alert('Yang anda pilih bukan image!');
+              </script>";
+        return false;
+    }
+
+    if ($ukuran_file > 5000000) {
+        echo "<script>
+                alert('Ukuran image terlalu besar!');
+              </script>";
+        return false;
+    }
+
+    $upload_dir = 'assets/upload/';
+
+    // Ensure the upload directory exists
+    if (!is_dir($upload_dir)) {
+        mkdir($upload_dir, 0777, true);
+    }
+
+    $nama_file_baru = uniqid();
+    $nama_file_baru .= '.';
+    $nama_file_baru .= $ekstensi_file;
+    move_uploaded_file($tmp_file, $upload_dir . $nama_file_baru);
+
+    return $nama_file_baru;
 }
 
 function insert_data($table, $datas = array())
@@ -137,6 +196,14 @@ function insert_data($table, $datas = array())
             $value = password_hash($value, PASSWORD_DEFAULT);
         }
 
+        if ($key == 'menu_img') {
+            if ($_FILES['image']['error'] == 4) {
+                $value = 'nophoto.jpg';
+            } else {
+                $value = upload();
+            }
+        }
+
         $data[] = "'" . htmlspecialchars($value) . "'";
     }
 
@@ -151,10 +218,8 @@ function insert_data($table, $datas = array())
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        header("Location: index.php?page=users");
         return $_SESSION['message'] = "Data berhasil ditambahkan";
     } else {
-        header("Location: index.php?page=add_user");
         return $_SESSION['message'] = "Data gagal ditambahkan";
     }
 }
@@ -170,6 +235,14 @@ function update_data($table, $datas = array(), $conditions = array())
 
         if ($key === 'password') {
             $value = password_hash($value, PASSWORD_BCRYPT);
+        }
+
+        if ($key === 'menu_img') {
+            if ($_FILES['image']['error'] == 4) {
+                $value = 'nophoto.jpg';
+            } else {
+                $value = upload();
+            }
         }
 
         $fields[] = mysqli_real_escape_string($conn, $key) . " = '" . mysqli_real_escape_string($conn, $value) . "'";
@@ -188,11 +261,9 @@ function update_data($table, $datas = array(), $conditions = array())
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        return true;
+        return $_SESSION['message'] = "Data berhasil ditambahkan";
     } else {
-
-        echo "Error: " . mysqli_error($conn);
-        return false;
+        return $_SESSION['message'] = "Data gagal ditambahkan";
     }
 }
 
@@ -205,11 +276,16 @@ function delete_data($table, $conditions = array())
 
 
     foreach ($conditions as $key => $value) {
-        $condition_fields[] = mysqli_real_escape_string($conn, $key) . " = '" . mysqli_real_escape_string($conn, $value) . "'";
+
+        if ($key === 'menu_img') {
+            unlink('assets/upload/' . $value);
+        }
+
+        $condition_fields[] = htmlspecialchars($key) . " = '" . htmlspecialchars($value) . "'";
     }
 
 
-    $sql = "DELETE FROM " . mysqli_real_escape_string($conn, $table);
+    $sql = "DELETE FROM " . htmlspecialchars($table);
     if (!empty($condition_fields)) {
         $sql .= " WHERE " . implode(" AND ", $condition_fields);
     }
@@ -218,10 +294,8 @@ function delete_data($table, $conditions = array())
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        header("Location: index.php?page=users");
         return $_SESSION['message'] = "Data berhasil dihapus";
     } else {
-        header("Location: index.php?page=users");
         return $_SESSION['message'] = "Data gagal dihapus";
     }
 }
