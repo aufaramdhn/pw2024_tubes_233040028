@@ -1,6 +1,16 @@
 <?php
 
-$orders = query("SELECT * FROM cart WHERE user_id = $_SESSION[user_id]");
+$id = $_SESSION['user_id'];
+
+$orders = query("SELECT * FROM cart WHERE user_id = $id");
+
+$grand_total = 0;
+
+foreach ($orders as $order) {
+    $total = $order['menu_price'] * $order['menu_qty'];
+    $grand_total += $total;
+}
+
 
 ?>
 
@@ -11,11 +21,7 @@ $orders = query("SELECT * FROM cart WHERE user_id = $_SESSION[user_id]");
     </div>
 
     <div class="container">
-        <?php if (empty($_SESSION['cart'])) : ?>
-            <h1>Your Cart is Empty</h1>
-            <p>Looks like you haven't added anything to your cart yet</p>
-            <a href="index.php?page=menu">Start Shopping</a>
-        <?php else : ?>
+        <?php if (!empty($orders)) : ?>
             <?php foreach ($orders as $order) :
             ?>
                 <div class="wrap-cart">
@@ -44,13 +50,17 @@ $orders = query("SELECT * FROM cart WHERE user_id = $_SESSION[user_id]");
                     </div>
                 </div>
             <?php endforeach; ?>
-        <?php endif ?>
-        <div class="wrap-total">
-            <div class="total">
-                <h3>Total</h3>
-                <p>Rp. 1000000</p>
+            <div class="wrap-total">
+                <div class="total">
+                    <h3>Total</h3>
+                    <p>Rp. <?= $grand_total ?></p>
+                </div>
+                <button class="btn btn-checkout">Checkout</button>
             </div>
-            <button class="btn btn-checkout">Checkout</button>
-        </div>
+        <?php else : ?>
+            <h1>Your Cart is Empty</h1>
+            <p>Looks like you haven't added anything to your cart yet</p>
+            <a href="index.php?page=menu">Start Shopping</a>
+        <?php endif ?>
     </div>
 </section>
