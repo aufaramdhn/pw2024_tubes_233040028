@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_SESSION['user_id'])) {
-    $cart = array_query("SELECT * FROM cart WHERE user_id = {$_SESSION['user_id']}");
+    $cart = array_query("SELECT COUNT(*) as jumlah FROM cart WHERE user_id = $_SESSION[user_id]");
 } else {
     $cart = [];
 }
@@ -27,7 +27,7 @@ if (isset($_SESSION['user_id'])) {
                 <div class="cart">
                     <a href="<?= base_url('index.php?page=cart') ?>"><i class="ri-shopping-cart-line"></i></a>
                     <div class="cart-count">
-                        <?= count($cart) ?>
+                        <?= $cart['jumlah'] ?>
                     </div>
                 </div>
                 <div class="dropdown">
