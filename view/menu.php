@@ -10,13 +10,13 @@ if (isset($_POST['order'])) {
 
     $menu_id = $_POST['order'];
 
-    $q_menu = query("SELECT menu_id FROM menu WHERE menu_id = $menu_id");
+    $q_menu = query("SELECT * FROM menu WHERE menu_id = $menu_id");
 
     foreach ($q_menu as $m) {
         $r_m = $m;
     }
 
-    $q_cart = query("SELECT menu_id FROM cart WHERE menu_id = $menu_id");
+    $q_cart = query("SELECT * FROM cart WHERE menu_id = $menu_id");
 
     foreach ($q_cart as $c) {
         $r_c = $c;
@@ -33,7 +33,8 @@ if (isset($_POST['order'])) {
             'menu_qty' => 1
         ];
 
-        $result = insert_data('cart', $array_insert);
+        insert_data('cart', $array_insert);
+        header('Location: ../index.php');
     } else {
         $array_update = [
             'menu_qty' => $r_c['menu_qty'] + 1
@@ -43,15 +44,10 @@ if (isset($_POST['order'])) {
             'menu_id' => $r_c['menu_id']
         ];
 
-        $result = update_data('cart', $array_update, $conditions);
+        update_data('cart', $array_update, $conditions);
+        header('Location: ../index.php?page=menu');
     }
-    if ($result) {
-        $_SESSION['smessage'] = "Item berhasil ditambahkan ke keranjang.";
-    } else {
-        $_SESSION['message'] = "Item gagal ditambahkan ke keranjang.";
-    }
-    header('Location: index.php?page=menu');
-    exit;
+    header("Location: ../index.php?page=menu");
 }
 ?>
 
