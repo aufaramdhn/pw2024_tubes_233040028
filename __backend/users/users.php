@@ -10,19 +10,8 @@ endif;
 ?>
 
 <div class="add-data">
-    <a href="index.php?page=add_user">Add Data</a>
+    <a href="index.php?page=add_user">Add User</a>
 </div>
-
-<?php
-
-if (isset($_SESSION['message'])) :
-
-    echo $_SESSION['message'];
-    unset($_SESSION['message']);
-
-endif;
-
-?>
 
 <table class="table">
     <thead>
