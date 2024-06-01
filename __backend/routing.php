@@ -12,7 +12,7 @@ switch ($page) {
         include('dashboard.php');
         break;
 
-    case 'users':
+    case 'user':
         include('users/users.php');
         break;
 
@@ -24,7 +24,7 @@ switch ($page) {
         include('users/edit_user.php');
         break;
 
-    case 'menus':
+    case 'menu':
         include('menu/menu.php');
         break;
 
@@ -32,7 +32,15 @@ switch ($page) {
         include('menu/add_menu.php');
         break;
 
-    case 'orders':
+    case 'edit_menu':
+        include('menu/edit_menu.php');
+        break;
+
+    case 'delete_menu':
+        include('menu/delete_menu.php');
+        break;
+
+    case 'order':
         include('orders/orders.php');
         break;
 }

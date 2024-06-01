@@ -12,19 +12,19 @@
                     Dashboard
                 </span>
             </a>
-            <a href="index.php?page=users">
+            <a href="index.php?page=user">
                 <i class="ri-user-line"></i>
                 <span class="nav-title">
                     Users
                 </span>
             </a>
-            <a href="index.php?page=menus">
+            <a href="index.php?page=menu">
                 <i class="ri-file-list-2-line"></i>
                 <span class="nav-title">
                     Menus
                 </span>
             </a>
-            <a href="index.php?page=orders">
+            <a href="index.php?page=order">
                 <i class="ri-shopping-cart-2-line"></i>
                 <span class="nav-title">
                     Orders
