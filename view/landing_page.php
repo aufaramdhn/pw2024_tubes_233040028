@@ -41,6 +41,54 @@
         </div>
 </section>
 
+<?php
+
+if (isset($_POST['order'])) {
+
+    $menu_id = $_POST['order'];
+
+    $q_menu = query("SELECT * FROM menu WHERE menu_id = $menu_id");
+
+    foreach ($q_menu as $m) {
+        $r_m = $m;
+    }
+
+    $q_cart = query("SELECT * FROM cart WHERE menu_id = $menu_id");
+
+    foreach ($q_cart as $c) {
+        $r_c = $c;
+    }
+
+    $cek = mysqli_num_rows($q_cart);
+
+    if ($cek == 0) {
+        $array_insert = [
+            'user_id' => $_SESSION['user_id'],
+            'menu_id' => $menu_id,
+            'menu_name' => $r_m['menu_name'],
+            'menu_price' => $r_m['menu_price'],
+            'menu_qty' => 1
+        ];
+
+        insert_data('cart', $array_insert);
+        header('Location: ../index.php');
+    } else {
+        $array_update = [
+            'menu_qty' => $r_c['menu_qty'] + 1
+        ];
+
+        $conditions = [
+            'menu_id' => $r_c['menu_id']
+        ];
+
+        update_data('cart', $array_update, $conditions);
+        header('Location: ../index.php');
+    }
+    header("Location: ../index.php");
+}
+
+?>
+
 <section id="menu-page">
     <div class="header-text">
         <h1>Our Menus</h1>
@@ -63,7 +111,7 @@
                             <span>Rp. <?= number_format($menu['menu_price']) ?></span>
                         </div>
                         <?php if (isset($_SESSION['login'])) { ?>
-                            <form action="proses/add_cart.php" method="POST">
+                            <form action="" method="POST">
                                 <button class="btn" type="submit" name="order" value="<?= $menu['menu_id'] ?>">Order</button>
                             </form>
                         <?php } else { ?>
