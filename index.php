@@ -12,6 +12,9 @@ require_once('function.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/menu.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/cart.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/profile.css') ?>">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
