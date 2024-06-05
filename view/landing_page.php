@@ -5,9 +5,9 @@
             <p>Destinasi online Anda untuk memesan makanan favorit Anda dengan mudah dan cepat. Dengan kami, Anda tidak perlu lagi repot-repot keluar rumah atau menelepon restoran, karena semua pesanan Anda dapat diproses hanya dengan beberapa klik!</p>
             <a href="" class="btn">Pilih Menu</a>
         </div>
-        <div class="img-home">
+        <!-- <div class="img-home">
             <img src="/assets/picture/login.jpg" alt="" />
-        </div>
+        </div> -->
     </div>
 </section>
 
@@ -62,6 +62,7 @@ if (isset($_POST['order'])) {
     $cek = mysqli_num_rows($q_cart);
 
     if ($cek == 0) {
+
         $array_insert = [
             'user_id' => $_SESSION['user_id'],
             'menu_id' => $menu_id,
@@ -97,13 +98,14 @@ if (isset($_POST['order'])) {
     <div class="container">
         <div class="wrap-menu">
             <?php
-            $menus = array_query("SELECT * FROM menu ORDER BY RAND() LIMIT 4");
-
-            shuffle($menus);
+            $menus = query("SELECT * FROM menu ORDER BY RAND() LIMIT 4");
+            if (mysqli_num_rows($menus) == 0) {
+                echo "<p style='font-size:2rem; margin-top:60px;'>Tidak ada menu yang tersedia</p>";
+            }
             foreach ($menus as $menu) : ?>
                 <div class="card">
                     <div class="card-img">
-                        <!-- <img src="https://source.unsplash.com/300x300/?food" alt="" /> -->
+                        <img src="<?= base_url("assets/upload/$menu[menu_img]") ?>" alt="" />
                     </div>
                     <div class="card-content">
                         <div class="card-title">
@@ -126,28 +128,48 @@ if (isset($_POST['order'])) {
 
 </section>
 
-<section id="contact">
+<section id="review">
     <div class="container">
         <div class="header-text">
-            <h1>Contact Us</h1>
-            <!-- <p>Hubungi kami jika Anda memiliki pertanyaan atau masalah terkait layanan kami. Kami akan dengan senang hati membantu Anda!</p> -->
+            <h1>Reviews</h1>
         </div>
-        <div class="wrap-contact">
-            <form action="">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username">
+        <div class="wrap-review">
+            <div class="card">
+                <div class="card-img img-review">
+                    <img src="/assets/upload/nophoto.png" alt="">
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password">
+                <div class="card-body">
+                    <h3>John Doe</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea name="message" id="message" type="text" cols="4" rows="4" contenteditable="true"></textarea>
+            </div>
+            <div class="card">
+                <div class="card-img img-review">
+                    <img src="/assets/upload/nophoto.png" alt="">
                 </div>
-                <button type="submit" name="login" class="btn">Login</button>
-            </form>
+                <div class="card-body">
+                    <h3>John Doe</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img img-review">
+                    <img src="/assets/upload/nophoto.png" alt="">
+                </div>
+                <div class="card-body">
+                    <h3>John Doe</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-img img-review">
+                    <img src="/assets/upload/nophoto.png" alt="">
+                </div>
+                <div class="card-body">
+                    <h3>John Doe</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
