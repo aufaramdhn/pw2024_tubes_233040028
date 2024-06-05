@@ -9,6 +9,10 @@ endif;
 
 ?>
 
+<div class="page">
+    <a href="index.php?page=index">Dashboard</a> / Users
+</div>
+
 <div class="add-data">
     <a href="index.php?page=add_user">Add User</a>
 </div>
@@ -17,10 +21,10 @@ endif;
     <thead>
         <tr>
             <th>No</th>
+            <th>Full Name</th>
             <th>Username</th>
-            <th>Password</th>
+            <th>Image</th>
             <th>Email</th>
-            <th>Role</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -31,13 +35,14 @@ endif;
         ?>
             <tr>
                 <td><?= $id++ ?></td>
+                <td align="center">
+                    <img src="<?= base_url("assets/upload/$user[user_img]") ?>" width="120" height="120">
+                </td>
+                <td><?= $user['user_name'] ?></td>
                 <td><?= $user['username'] ?></td>
-                <td><?= $user['password'] ?></td>
                 <td><?= $user['user_email'] ?></td>
-                <td><?= $user['role_id'] ?></td>
-                <td>
-                    <a href="index.php?page=edit_user&user_id=<?= $user['user_id'] ?>">Edit</a>
-                    <a href="index.php?page=users&user_id=<?= $user['user_id'] ?>">Delete</a>
+                <td align="center">
+                    <a class="btn-small btn-danger" href="index.php?page=users&user_id=<?= $user['user_id'] ?>">Delete</a>
                 </td>
             </tr>
         <?php endforeach ?>
