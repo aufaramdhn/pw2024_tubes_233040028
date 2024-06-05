@@ -18,15 +18,16 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<div class="header-text">
-    <h1>Add User</h1>
+<div class="page">
+    <a href="index.php?page=index">Dashboard</a> / <a href="index.php?page=menu">Menus</a> / Add Menu
 </div>
+
 <form action="" method="POST" enctype="multipart/form-data">
     <div class="flex wrap-form">
-        <div class="add-user-img">
+        <div class="add-img">
             <img src="" class="img-preview" width="430" height="430">
             <input type="file" name="image" id="image" class="image" onchange="previewImage()">
-            <label for="image">Upload Image</label>
+            <label class="btn" for="image">Upload Image</label>
         </div>
         <div class="col">
             <div class="form-group">
@@ -39,5 +40,5 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
-    <button type="submit" name="submit" class="btn btn-add-user">Save</button>
+    <button type="submit" name="submit" class="btn btn-primary float-right">Save</button>
 </form>

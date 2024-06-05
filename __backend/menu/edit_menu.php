@@ -9,8 +9,14 @@ if (isset($_POST['submit'])) {
 
     $menu_id  = $_GET['menu_id'];
 
+    if ($_FILES['image']['error'] === 4) {
+        $image = $_POST['old_img'];
+    } else {
+        $image = $_FILES['image'];
+    }
+
     $array_update = [
-        'menu_img' => $_FILES['image'],
+        'menu_img' => $image,
         'menu_name' => $_POST['menu_name'],
         'menu_price' => $_POST['menu_price'],
     ];
@@ -26,16 +32,17 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<div class="header-text">
-    <h1>Add User</h1>
+<div class="page">
+    <a href="index.php?page=index">Dashboard</a> / <a href="index.php?page=menu">Menus</a> / Edit Menu
 </div>
+
 <form action="" method="POST" enctype="multipart/form-data">
     <div class="flex wrap-form">
-        <div class="add-user-img">
-            <img src="assets/upload/<?= $menu['menu_img'] ?>" class="img-preview" width="430" height="430">
-            <input type="file" name="image" style="display: none;" value="<?= $menu['menu_img'] ?>">
+        <div class="add-img">
+            <img src="<?= base_url("assets/upload/$menu[menu_img]") ?>" class="img-preview" width="430" height="430">
+            <input type="text" name="old_img" style="display: none;" value="<?= $menu['menu_img'] ?>">
             <input type="file" name="image" id="image" class="image" onchange="previewImage()">
-            <label for="image">Upload Image</label>
+            <label class="btn" for="image">Upload Image</label>
         </div>
         <div class="col">
             <div class="form-group">
@@ -48,5 +55,5 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
-    <button type="submit" name="submit" class="btn btn-add-user">Save</button>
+    <button type="submit" name="submit" class="btn btn-primary float-right">Save</button>
 </form>
