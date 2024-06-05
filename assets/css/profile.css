@@ -75,4 +75,18 @@
   border: 1px solid #ccc;
 }
 
+.form-group.img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-group input[type="file"] {
+  display: none;
+}
+
+.btn-img {
+  margin: 20px 0;
+}
+
 /* END VIEW PROFILE */
