@@ -73,6 +73,13 @@ if (isset($_POST['order'])) {
         <input type="checkbox" name="" id="Fried" value="Fried">
     </div> -->
     <div class="wrap-menu wrap-menu-page">
+        <?phP
+
+        if (mysqli_num_rows($menus) == 0) {
+            echo "<p style='font-size:2rem; margin-top:60px;'>Tidak ada menu yang tersedia</p>";
+        }
+
+        ?>
         <?php foreach ($menus as $menu) : ?>
             <div class="card">
                 <div class="card-img">
