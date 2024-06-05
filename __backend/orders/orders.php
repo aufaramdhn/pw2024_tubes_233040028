@@ -1,7 +1,10 @@
 <?php
 
+$tables = ['menu_order', 'user', 'menu'];
+$conditions = ['menu_order.user_id = user.user_id', 'menu_order.menu_id = menu.menu_id'];
+$select = '*';
 
-$users = query("SELECT * FROM menu_order");
+$users = dynamic_join($tables, $conditions, 'INNER', $select);
 
 if (isset($_GET['user_id'])) :
     delete_data('menu_order', ['user_id' => $_GET['user_id']]);
@@ -10,19 +13,8 @@ endif;
 ?>
 
 <div class="add-data">
-    <a href="index.php?page=add_user">Add Data</a>
+    <a href="index.php?page=add_order">Add Data</a>
 </div>
-
-<?php
-
-if (isset($_SESSION['message'])) :
-
-    echo $_SESSION['message'];
-    unset($_SESSION['message']);
-
-endif;
-
-?>
 
 <table class="table">
     <thead>
@@ -47,8 +39,8 @@ endif;
                 <td><?= $user['user_email'] ?></td>
                 <td><?= $user['role_id'] ?></td>
                 <td>
-                    <a href="index.php?page=edit_user&user_id=<?= $user['user_id'] ?>">Edit</a>
-                    <a href="index.php?page=users&user_id=<?= $user['user_id'] ?>">Delete</a>
+                    <a class="btn-small btn-warning" href="index.php?page=edit_user&user_id=<?= $user['user_id'] ?>">Edit</a>
+                    <a class="btn-small btn-danger" href="index.php?page=users&user_id=<?= $user['user_id'] ?>">Delete</a>
                 </td>
             </tr>
         <?php endforeach ?>
