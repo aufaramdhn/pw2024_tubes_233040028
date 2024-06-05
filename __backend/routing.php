@@ -43,4 +43,12 @@ switch ($page) {
     case 'order':
         include('orders/orders.php');
         break;
+
+    case 'add_order':
+        include('orders/add_order.php');
+        break;
+
+    case 'logout';
+        include('logout.php');
+        break;
 }

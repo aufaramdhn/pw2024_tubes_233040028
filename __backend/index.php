@@ -15,6 +15,8 @@ include('../function.php') ?>
 
 <body>
 
+    <?php include(BASE_PATH . '__backend\\page.php'); ?>
+
     <?php include(BASE_PATH . '__backend\\layouts\\header.php'); ?>
 
     <?php
@@ -30,6 +32,7 @@ include('../function.php') ?>
     <?php
         unset($_SESSION['message']);
     } ?>
+
 
     <?php include(BASE_PATH . '__backend\\routing.php'); ?>
 
