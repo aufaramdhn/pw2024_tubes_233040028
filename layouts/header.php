@@ -16,10 +16,7 @@ if (isset($_SESSION['user_id'])) {
         <nav>
             <ul>
                 <li><a href="<?= base_url('index.php') ?>">Home</a></li>
-                <li><a href="<?= base_url('#') ?>">About</a></li>
-                <li><a href="<?= base_url('#') ?>">Services</a></li>
                 <li><a href="<?= base_url('index.php?page=menu') ?>">Menu</a></li>
-                <li><a href="<?= base_url('#') ?>">Contact Us</a></li>
             </ul>
         </nav>
         <div class="profile-header">
@@ -31,20 +28,20 @@ if (isset($_SESSION['user_id'])) {
                     </div>
                 </div>
                 <div class="dropdown">
-                    <img src="https://source.unsplash.com/35x35/?nature,water" alt="">
+                    <img src="<?= base_url("assets/upload/$_SESSION[user_img]") ?>" width="50" height="50" alt="">
                     <i class="ri-arrow-down-s-line"></i>
                 </div>
-                <ul class="dropdown-menu">
+                <div class="dropdown-menu">
                     <?php if ($_SESSION['role'] == 'admin') { ?>
-                        <li><a href="index.php?page=admin">Admin</a></li>
+                        <a class="dropdown-item" href="<?= base_url('__backend/index.php') ?>">Admin</a>
                     <?php } ?>
-                    <li>
-                        <a href="index.php?page=profile">Profile</a>
-                    </li>
-                    <li>
-                        <a href="index.php?page=logout">Logout</a>
-                    </li>
-                </ul>
+
+                    <a class="dropdown-item" href="index.php?page=profile_user&subpage=profile">Profile</a>
+
+
+                    <a class="dropdown-item" href="index.php?page=logout">Logout</a>
+
+                </div>
             <?php else : ?>
                 <a href="auth/login.php">Login</a>
             <?php endif ?>

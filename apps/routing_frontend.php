@@ -20,23 +20,15 @@ switch ($page) {
         include('view/detail_menu.php');
         break;
 
-    case 'profile':
-        include('view/profile.php');
-        break;
-
     case 'cart':
         include('view/cart.php');
         break;
 
-    case 'profile';
-        include('view/profile.php');
+    case 'profile_user';
+        include('view/profile/index.php');
         break;
 
     case 'logout':
         include('auth/logout.php');
-        break;
-
-    case 'admin':
-        include('__backend/index.php');
         break;
 }
