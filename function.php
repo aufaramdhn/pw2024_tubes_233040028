@@ -44,6 +44,32 @@ function array_query($query)
     return $rows;
 }
 
+function dynamic_join($tables, $conditions, $join_type = 'INNER', $select = '*')
+{
+    $conn = koneksi();
+
+    $query = "SELECT $select FROM " . $tables[0];
+
+    for ($i = 1; $i < count($tables); $i++) {
+        $query .= " $join_type JOIN " . $tables[$i] . " ON " . $conditions[$i - 1];
+    }
+
+    $result = mysqli_query($conn, $query);
+
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    }
+
+    $rows = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+
+    mysqli_close($conn);
+
+    return $rows;
+}
+
 function live_search_menu($table, $keyword)
 {
 
@@ -67,6 +93,8 @@ function login($data)
         if (password_verify($password, $user['password'])) :
             $_SESSION['login'] = true;
             $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['user_img'] = $user['user_img'];
+            $_SESSION['fullname'] = $user['user_name'];
             if ($user['role_id'] == 1) {
                 $_SESSION['role'] = 'admin';
             } else {
@@ -166,9 +194,8 @@ function upload()
         return false;
     }
 
-    $upload_dir = 'assets/upload/';
+    $upload_dir = '../assets/upload/';
 
-    // Ensure the upload directory exists
     if (!is_dir($upload_dir)) {
         mkdir($upload_dir, 0777, true);
     }
@@ -196,7 +223,7 @@ function insert_data($table, $datas = array())
             $value = password_hash($value, PASSWORD_DEFAULT);
         }
 
-        if ($key == 'menu_img') {
+        if ($key == 'menu_img' || $key == 'user_img') {
             if ($_FILES['image']['error'] == 4) {
                 $value = 'nophoto.jpg';
             } else {
@@ -218,9 +245,11 @@ function insert_data($table, $datas = array())
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        return $_SESSION['message'] = "Data berhasil ditambahkan";
+        $_SESSION['message'] = "Data berhasil ditambahkan";
+        return true;
     } else {
-        return $_SESSION['message'] = "Data gagal ditambahkan";
+        $_SESSION['message'] = "Data gagal ditambahkan";
+        return false;
     }
 }
 
@@ -234,26 +263,26 @@ function update_data($table, $datas = array(), $conditions = array())
     foreach ($datas as $key => $value) {
 
         if ($key === 'password') {
-            $value = password_hash($value, PASSWORD_BCRYPT);
+            $value = password_hash($value, PASSWORD_DEFAULT);
         }
 
-        if ($key === 'menu_img') {
+        if ($key === 'user_img' || $key === 'menu_img') {
             if ($_FILES['image']['error'] == 4) {
-                $value = 'nophoto.jpg';
+                $value = $value;
             } else {
                 $value = upload();
             }
         }
 
-        $fields[] = mysqli_real_escape_string($conn, $key) . " = '" . mysqli_real_escape_string($conn, $value) . "'";
+        $fields[] = htmlspecialchars($key) . " = '" . htmlspecialchars($value) . "'";
     }
 
     $condition_fields = [];
     foreach ($conditions as $key => $value) {
-        $condition_fields[] = mysqli_real_escape_string($conn, $key) . " = '" . mysqli_real_escape_string($conn, $value) . "'";
+        $condition_fields[] = htmlspecialchars($key) . " = '" . htmlspecialchars($value) . "'";
     }
 
-    $sql = "UPDATE " . mysqli_real_escape_string($conn, $table) . " SET ";
+    $sql = "UPDATE " . htmlspecialchars($table) . " SET ";
     $sql .= implode(", ", $fields);
     $sql .= " WHERE ";
     $sql .= implode(" AND ", $condition_fields);
@@ -261,9 +290,11 @@ function update_data($table, $datas = array(), $conditions = array())
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        return $_SESSION['message'] = "Data berhasil ditambahkan";
+        $_SESSION['message'] = "Data berhasil diubah";
+        return true;
     } else {
-        return $_SESSION['message'] = "Data gagal ditambahkan";
+        $_SESSION['message'] = "Data gagal diubah";
+        return false;
     }
 }
 
@@ -294,8 +325,10 @@ function delete_data($table, $conditions = array())
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        return $_SESSION['message'] = "Data berhasil dihapus";
+        $_SESSION['message'] = "Data berhasil dihapus";
+        return true;
     } else {
-        return $_SESSION['message'] = "Data gagal dihapus";
+        $_SESSION['message'] = "Data gagal dihapus";
+        return false;
     }
 }
