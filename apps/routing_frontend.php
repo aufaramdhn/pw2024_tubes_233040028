@@ -24,6 +24,10 @@ switch ($page) {
         include('view/cart.php');
         break;
 
+    case 'receipt':
+        include('view/receipt.php');
+        break;
+
     case 'profile_user';
         include('view/profile/index.php');
         break;

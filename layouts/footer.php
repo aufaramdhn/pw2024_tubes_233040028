@@ -3,8 +3,8 @@
     <div class="container">
         <div class="wrap-footer">
             <div class="footer-logo">
-                <h1>FOOD</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod dolorem repellendus, atque aut mollitia reprehenderit temporibus voluptatem in perspiciatis delectus?</p>
+                <h1>Bowl Realm</h1>
+                <p>Founded by a team of food enthusiasts with a deep love for Japanese cuisine, BowlRealm was born out of a desire to share the exquisite taste and cultural heritage of Japan with the world.</p>
                 <div class="footer-social">
                     <ul>
                         <li><a href=""><i class="ri-facebook-circle-line"></i></a></li>
@@ -50,9 +50,6 @@
         </div>
     </div>
     <div class="copyright">
-        <p>&copy; 2024 FOOD. All Rights Reserved.</p>
+        <p>&copy; 2024 BowlRealm. All Rights Reserved.</p>
     </div>
 </footer>
-<script src="<?= base_url('assets/js/script.js') ?>"></script>
-<script src="<?= base_url('assets/js/live_search.js') ?>"></script>
-<script src="<?= base_url('assets/js/add_cart.js') ?>"></script>

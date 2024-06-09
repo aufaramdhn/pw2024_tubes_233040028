@@ -1,13 +1,13 @@
 <section id="home" class="container">
     <div class="wrap-home">
         <div class="deskripsi-home">
-            <h1>Selamat Datang di [Nama Situs]: Solusi Pemesanan Makanan yang Praktis dan Lezat!</h1>
-            <p>Destinasi online Anda untuk memesan makanan favorit Anda dengan mudah dan cepat. Dengan kami, Anda tidak perlu lagi repot-repot keluar rumah atau menelepon restoran, karena semua pesanan Anda dapat diproses hanya dengan beberapa klik!</p>
-            <a href="" class="btn">Pilih Menu</a>
+            <h1>Welcome to BowlRealm A Practical and Delicious Food Ordering Solution!</h1>
+            <p>Your online destination to order your favorite food easily and quickly. With us, you no longer need to bother leaving the house or calling restaurants, as all your orders can be processed with just a few clicks!</p>
+            <a href="" class="btn">Select Menu</a>
         </div>
-        <!-- <div class="img-home">
+        <div class="img-home">
             <img src="/assets/picture/login.jpg" alt="" />
-        </div> -->
+        </div>
     </div>
 </section>
 
@@ -17,12 +17,6 @@
             <h3>3+</h3>
             <p>Menu Makanan</p>
         </div>
-        <!-- <div class="vertical-line"></div> -->
-        <div class="drink-menu">
-            <h3>3+</h3>
-            <p>Menu Minuman</p>
-        </div>
-        <!-- <div class="vertical-line"></div> -->
         <div class="experience">
             <h3>3+</h3>
             <p>Pengalaman Pelayanan</p>
@@ -31,13 +25,21 @@
 </section>
 
 <section id="about" class="container">
+    <div class="header-text">
+        <h1>About Us</h1>
+    </div>
     <div class="wrap-about">
         <div class="photo-about">
-            <img src="https://source.unsplash.com/400x400/?nature,water" alt="" />
+            <img src="<?= base_url('assets/picture/about.png') ?>" alt="" />
         </div>
         <div class="deskripsi-about">
-            <h1>About Us</h1>
-            <p>FOOD adalah layanan pemesanan makanan online yang menyediakan berbagai macam menu makanan lezat dan bergizi. Kami berkomitmen untuk memberikan layanan terbaik bagi pelanggan kami, dengan menyediakan makanan yang berkual</p>
+            <p>Welcome to BowlRealm, your ultimate destination for an authentic Japanese culinary experience! At BowlRealm, we are passionate about bringing the rich flavors and traditions of Japan to your table through our carefully crafted donburi and ramen dishes.</p>
+
+            <p>
+                Founded by a team of food enthusiasts with a deep love for Japanese cuisine, BowlRealm was born out of a desire to share the exquisite taste and cultural heritage of Japan with the world. Our journey began with a simple mission: to create a space where people can enjoy the finest Japanese bowls made with the freshest ingredients and time-honored techniques.</p>
+
+            <p>
+                At BowlRealm, we believe in the power of a great meal to bring people together and create lasting memories. We are committed to providing an exceptional dining experience that combines traditional Japanese recipes with a modern twist. Each bowl we serve is a testament to our dedication to quality, authenticity, and innovation.</p>
         </div>
 </section>
 
@@ -66,6 +68,8 @@ if (isset($_POST['order'])) {
         $array_insert = [
             'user_id' => $_SESSION['user_id'],
             'menu_id' => $menu_id,
+            'menu_img' => $r_m['menu_img'],
+            'menu_ctg' => $r_m['menu_ctg'],
             'menu_name' => $r_m['menu_name'],
             'menu_price' => $r_m['menu_price'],
             'menu_qty' => 1
@@ -93,7 +97,7 @@ if (isset($_POST['order'])) {
 <section id="menu-page">
     <div class="header-text">
         <h1>Our Menus</h1>
-        <p>Pilih menu makanan favorit Anda dan nikmati makanan lezat yang kami sediakan!</p>
+        <p class="container">Choose your favorite meal menu and enjoy the delicious food we provide!</p>
     </div>
     <div class="container">
         <div class="wrap-menu">
@@ -128,48 +132,30 @@ if (isset($_POST['order'])) {
 
 </section>
 
+
 <section id="review">
-    <div class="container">
-        <div class="header-text">
-            <h1>Reviews</h1>
-        </div>
-        <div class="wrap-review">
+    <div class="header-text">
+        <h1>Reviews</h1>
+    </div>
+
+
+    <div class="wrap-review">
+        <?php
+
+        $reviews = array_query("SELECT * FROM review NATURAL JOIN user ORDER BY RAND() LIMIT 10");
+
+        foreach ($reviews as $review) :
+
+        ?>
             <div class="card">
                 <div class="card-img img-review">
-                    <img src="/assets/upload/nophoto.png" alt="">
+                    <img src="/assets/upload/<?= $review['user_img'] ?>" alt="">
                 </div>
                 <div class="card-body">
-                    <h3>John Doe</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
+                    <h3><?= $review['user_name'] ?></h3>
+                    <p><?= $review['review_text'] ?></p>
                 </div>
             </div>
-            <div class="card">
-                <div class="card-img img-review">
-                    <img src="/assets/upload/nophoto.png" alt="">
-                </div>
-                <div class="card-body">
-                    <h3>John Doe</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img img-review">
-                    <img src="/assets/upload/nophoto.png" alt="">
-                </div>
-                <div class="card-body">
-                    <h3>John Doe</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img img-review">
-                    <img src="/assets/upload/nophoto.png" alt="">
-                </div>
-                <div class="card-body">
-                    <h3>John Doe</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-                </div>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </section>

@@ -6,12 +6,12 @@ if (isset($_POST['register'])) {
     $login = register($_POST);
 }
 
-if (isset($_SESSION['message'])) {
-    echo "<script>
-        alert('$_SESSION[message]');
-    </script>";
-    unset($_SESSION['message']);
-}
+// if (isset($_SESSION['message'])) {
+//     echo "<script>
+//         alert('$_SESSION[message]');
+//     </script>";
+//     unset($_SESSION['message']);
+// }
 
 ?>
 
@@ -27,40 +27,41 @@ if (isset($_SESSION['message'])) {
 </head>
 
 <body>
-    <div class="container">
-        <div class="wrap">
-            <div class="wrap-img">
-                <img src="../assets/picture/login.jpg" alt="">
+    <div class="wrap">
+        <div class="wrap-img">
+            <img src="../assets/picture/login.jpg" alt="">
+        </div>
+        <div class="wrap-form">
+            <div class="logo">
+                <img src="../assets/picture/logo.png" alt="" width="150" height="150">
             </div>
-            <div class="wrap-form">
-                <div class="header-text">
-                    <h2>Register</h2>
+            <div class="header-text">
+                <h2>Register</h2>
+            </div>
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username">
                 </div>
-                <form action="" method="POST">
-                    <div class="form-group">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" id="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" name="email" id="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password">
-                    </div>
-                    <div class="form-group">
-                        <label for="cPassword">Confirm Password</label>
-                        <input type="password" name="cPassword" id="cPassword">
-                    </div>
-                    <div class="">
-                        <input type="hidden" name="id_role" value="2">
-                    </div>
-                    <button type="submit" name="register" class="btn">Register</button>
-                </form>
-                <div class="login">
-                    <p>Already have an account? <a href="login.php">Login</a></p>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" name="email" id="email">
                 </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="password">
+                </div>
+                <div class="form-group">
+                    <label for="cPassword">Confirm Password</label>
+                    <input type="password" name="cPassword" id="cPassword">
+                </div>
+                <div class="">
+                    <input type="hidden" name="id_role" value="2">
+                </div>
+                <button type="submit" name="register" class="btn">Register</button>
+            </form>
+            <div class="login">
+                <p>Already have an account? <a href="login.php">Login</a></p>
             </div>
         </div>
     </div>

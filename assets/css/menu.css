@@ -107,25 +107,49 @@
   display: none;
 }
 
-.card-img img {
-  width: 100%;
-  border-radius: 5px;
+.wrap-menu .card .card-img img {
+  width: 220px;
+  height: 220px;
 }
 
-.card-title {
+.wrap-menu .card-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
 }
 
-.card-content h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+.wrap-menu .card-content .card-title {
+  margin-bottom: 1.2rem;
 }
 
-.card-content .card-title {
-  margin-bottom: 1.2rem;
+.wrap-menu .card-content .card-title h3 {
+  font-size: 1rem;
+}
+
+.category {
+  margin: 20px 0 0 35px;
+}
+
+.category button.btn-ctg {
+  padding: 10px 20px;
+  border: 1px solid var(--primary-900-color);
+  color: var(--primary-900-color);
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: all 0.3s;
+}
+
+.category button.btn-ctg:hover {
+  background-color: var(--primary-900-color);
+  color: var(--white-color);
+}
+
+.category button.btn-ctg.active {
+  background-color: var(--primary-900-color);
+  color: var(--white-color);
 }
 
 /* End Menu */

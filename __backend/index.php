@@ -1,5 +1,15 @@
 <?php
-include('../function.php') ?>
+
+
+include('../function.php');
+
+if ($_SESSION['role'] != 'admin') {
+    header('Location: ../index.php');
+    exit;
+}
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,8 +17,8 @@ include('../function.php') ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
-
+    <title>Bowl Realm | Admin Page</title>
+    <link rel="icon" type="image/x-icon" href="<?= base_url('assets/picture/logo.png') ?>">
     <link rel="stylesheet" href="<?= base_url('__backend/assets/style.css') ?>">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 </head>

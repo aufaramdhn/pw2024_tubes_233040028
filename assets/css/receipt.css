@@ -1,0 +1,55 @@
+#receipt {
+  width: 100%;
+  /* height: 60vh; */
+  margin: 0 auto;
+  padding: 120px 0;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table tr th,
+table tr td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+table tr th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.receipt-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+@media print {
+  #receipt {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #fff;
+    box-shadow: none;
+  }
+  .wrap-receipt.container {
+    width: 100%;
+    padding: 0;
+  }
+  .user-info .info button {
+    display: none;
+  }
+  nav {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+}

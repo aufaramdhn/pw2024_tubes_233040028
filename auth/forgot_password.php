@@ -2,15 +2,43 @@
 
 require_once('../function.php');
 
-if (isset($_POST['login'])) {
-    $login = login($_POST);
+if (isset($_POST['forgot'])) {
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $cPassword = $_POST['cPassword'];
+
+    $user = array_query("SELECT * FROM user WHERE username = '$username'");
+
+    if ($user['username'] == $username) {
+        if ($password == $cPassword) {
+
+            $array_update = [
+                'password' => $password
+            ];
+
+            $condition = ['username' => $username];
+
+            update_data('user', $array_update, $condition);
+
+            header('Location: login.php');
+        } else {
+            echo "<script>
+                alert('Password tidak sama!');
+            </script>";
+        }
+    } else {
+        echo "<script>
+            alert('Username tidak ditemukan!');
+        </script>";
+    }
 }
 
 // if (isset($_SESSION['message'])) {
 //     echo "<script>
 //         alert('$_SESSION[message]');
 //     </script>";
-//     // unset($_SESSION['message']);
+//     unset($_SESSION['message']);
 // }
 
 ?>
@@ -35,7 +63,7 @@ if (isset($_POST['login'])) {
                 <img src="../assets/picture/logo.png" alt="" width="150" height="150">
             </div>
             <div class="header-text">
-                <h2>Login</h2>
+                <h2>Forgot Password</h2>
             </div>
             <form action="" method="POST">
                 <div class="form-group">
@@ -46,17 +74,14 @@ if (isset($_POST['login'])) {
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password">
                 </div>
-                <div class="form-checkbox">
-                    <input type="checkbox" name="remember" id="remember">
-                    <label for="remember">Remember me</label>
+                <div class="form-group">
+                    <label for="cPassword">Confirm Password</label>
+                    <input type="password" name="cPassword" id="cPassword">
                 </div>
-                <div class="forgot-password">
-                    <a href="forgot_password.php">Forgot Password?</a>
-                </div>
-                <button type="submit" name="login" class="btn">Login</button>
+                <button type="submit" name="forgot" class="btn">Login</button>
             </form>
             <div class="register">
-                <p>Don't have an account? <a href="register.php">Register</a></p>
+                <p>Already have an account? <a href="login.php">Login</a></p>
             </div>
         </div>
     </div>

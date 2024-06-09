@@ -44,7 +44,7 @@ function array_query($query)
     return $rows;
 }
 
-function dynamic_join($tables, $conditions, $join_type = 'INNER', $select = '*')
+function dynamic_join($tables, $conditions, $join_type = 'INNER', $select = '*', $where = '', $group_by = '')
 {
     $conn = koneksi();
 
@@ -53,6 +53,15 @@ function dynamic_join($tables, $conditions, $join_type = 'INNER', $select = '*')
     for ($i = 1; $i < count($tables); $i++) {
         $query .= " $join_type JOIN " . $tables[$i] . " ON " . $conditions[$i - 1];
     }
+
+    if (!empty($where)) {
+        $query .= " WHERE " . $where;
+    }
+
+    if (!empty($group_by)) {
+        $query .= " GROUP BY " . $group_by;
+    }
+
 
     $result = mysqli_query($conn, $query);
 
@@ -68,6 +77,19 @@ function dynamic_join($tables, $conditions, $join_type = 'INNER', $select = '*')
     mysqli_close($conn);
 
     return $rows;
+}
+
+function generateCryptoRandomString($length = 20)
+{
+    $characters = '0123456789';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[random_int(0, $charactersLength - 1)];
+    }
+
+    return $randomString;
 }
 
 function live_search_menu($table, $keyword)
@@ -153,7 +175,7 @@ function register($data)
 
     $query = "INSERT INTO user
                 VALUES
-              (NULL, '', '', '$username', '$email', '$password_baru', '$role'  )
+              (NULL, 'nophoto.jpg', '', '$username', '$email', '$password_baru', '$role'  )
             ";
     $_SESSION['message'] = 'Tolong isi semua!';
 
@@ -194,7 +216,11 @@ function upload()
         return false;
     }
 
-    $upload_dir = '../assets/upload/';
+    $base_dir = __DIR__; // Using the current directory
+    $upload_subdir = 'assets/upload/';
+
+    // Construct the full upload path
+    $upload_dir = $base_dir . '/' . $upload_subdir;
 
     if (!is_dir($upload_dir)) {
         mkdir($upload_dir, 0777, true);
@@ -224,10 +250,12 @@ function insert_data($table, $datas = array())
         }
 
         if ($key == 'menu_img' || $key == 'user_img') {
-            if ($_FILES['image']['error'] == 4) {
-                $value = 'nophoto.jpg';
-            } else {
+            if (!$_FILES) {
+                $value = $value;
+            } else if ($_FILES['image']['error'] == 0) {
                 $value = upload();
+            } else {
+                $value = 'nophoto.jpg';
             }
         }
 

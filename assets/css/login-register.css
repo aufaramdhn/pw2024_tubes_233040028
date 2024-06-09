@@ -7,16 +7,24 @@
 body {
   font-family: Arial, sans-serif;
   overflow-y: hidden;
-}
-
-.container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
+.logo {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .wrap {
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,6 +131,10 @@ body {
 @media screen and (max-width: 1080px) {
   body {
     overflow-y: scroll;
+  }
+
+  .container {
+    width: 100%;
   }
 
   .wrap {

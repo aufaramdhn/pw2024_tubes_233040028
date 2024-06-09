@@ -2,7 +2,7 @@
 
 #profile {
   position: relative;
-  padding: 80px 0;
+  padding: 120px 0 80px 0;
 }
 
 .wrap-profile {
@@ -33,9 +33,15 @@
   padding: 14px 22px;
   transition: all 0.3s;
   color: var(--black-100-color);
+  margin-bottom: 8px;
 }
 
 .profile-nav a:hover {
+  background-color: var(--primary-100-color);
+  border-radius: 8px;
+}
+
+.profile-nav a.active {
   background-color: var(--primary-100-color);
   border-radius: 8px;
 }
@@ -90,3 +96,95 @@
 }
 
 /* END VIEW PROFILE */
+
+/* ORDER */
+
+.wrap-order {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 10px;
+  gap: 30px;
+}
+
+.wrap-order .card .card-header {
+  margin-bottom: 50px;
+}
+
+.wrap-order .card .card-header,
+.wrap-order .card .card-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.wrap-order .card .card-header {
+  align-items: start;
+}
+
+.wrap-order .card .review {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.wrap-order .card .review a {
+  transition: all 0.3s ease-in-out;
+  color: var(--black-100);
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 10px 30px;
+}
+
+.wrap-order .card .review a:hover {
+  background-color: var(--secondary-200-color);
+  color: white;
+}
+
+/* END ORDER */
+
+@media screen and (max-width: 768px) {
+  .wrap-profile {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wrap-profile.container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .profile-img {
+    display: none;
+  }
+
+  .profile-nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .profile-nav a {
+    padding: 10px 20px;
+  }
+
+  .profile-content {
+    padding-left: 0;
+  }
+
+  .wrap-form {
+    flex-direction: column;
+  }
+
+  .form-col {
+    width: 100%;
+  }
+
+  .profile-nav {
+    gap: 10px;
+  }
+
+  .form-group.img label.btn-img {
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+}

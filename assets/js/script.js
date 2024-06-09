@@ -1,6 +1,13 @@
 const btnToggle = document.querySelector(".dropdown");
 const dropdown = document.querySelector(".dropdown-menu");
 
+const menuToggle = document.querySelector(".menu-toggle input");
+const navBar = document.querySelector(".navbar");
+
+menuToggle.addEventListener("click", function () {
+  navBar.classList.toggle("slide");
+});
+
 // Define the function to toggle dropdown
 function toggleDropdown() {
   dropdown.classList.toggle("hidden");
@@ -31,4 +38,9 @@ function previewImage() {
   oFReader.onload = function (oFREvent) {
     imgPreview.src = oFREvent.target.result;
   };
+}
+
+function closeAlert() {
+  const AlertClose = document.querySelectorAll("alert");
+  AlertClose.classList.add("none");
 }

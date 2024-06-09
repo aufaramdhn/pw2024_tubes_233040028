@@ -6,6 +6,7 @@ if (isset($_POST['search'])) {
     $menus = live_search_menu('menu', $_POST['keyword']);
 }
 
+
 if (isset($_POST['order'])) {
 
     $menu_id = $_POST['order'];
@@ -28,6 +29,8 @@ if (isset($_POST['order'])) {
         $array_insert = [
             'user_id' => $_SESSION['user_id'],
             'menu_id' => $menu_id,
+            'menu_img' => $r_m['menu_img'],
+            'menu_ctg' => $r_m['menu_ctg'],
             'menu_name' => $r_m['menu_name'],
             'menu_price' => $r_m['menu_price'],
             'menu_qty' => 1
@@ -49,6 +52,18 @@ if (isset($_POST['order'])) {
     }
     header("Location: ../index.php?page=menu");
 }
+
+$_POST['filter'] = isset($_POST['filter']) ? $_POST['filter'] : 'semua';
+
+
+
+if ($_POST['filter'] == 'ramen' || $_POST['filter'] == 'donburi' || $_POST['filter'] == 'drink') {
+    $menus = query("SELECT * FROM menu WHERE menu_ctg = '$_POST[filter]'");
+} else if ($_POST['filter'] == 'semua') {
+    $menus = query("SELECT * FROM menu");
+} else if ($_POST['filter'] == 'urutkan') {
+    $menus = query("SELECT * FROM menu ORDER BY menu_name ASC");
+}
 ?>
 
 <section id="menu" class="container">
@@ -60,6 +75,13 @@ if (isset($_POST['order'])) {
         <div class="search-menu">
             <input id="search" type="text" placeholder="Cari menu makanan" name="keyword" class="keyword">
             <button type="submit" name="search" class="btn=search"><i class="ri-search-line"></i></button>
+        </div>
+        <div class="category">
+            <button name="filter" value="semua" class="btn-ctg <?= $_POST['filter'] === 'semua' ? 'active' : '' ?>">All</button>
+            <button name="filter" value="ramen" class="btn-ctg <?= $_POST['filter'] === 'ramen' ? 'active' : '' ?>">Ramen</button>
+            <button name="filter" value="donburi" class="btn-ctg <?= $_POST['filter'] === 'donburi' ? 'active' : '' ?>">Donburi</button>
+            <button name="filter" value="drink" class="btn-ctg <?= $_POST['filter'] === 'drink' ? 'active' : '' ?>">Drink</button>
+            <button name="filter" value="urutkan" class="btn-ctg <?= $_POST['filter'] === 'urutkan' ? 'active' : '' ?>">A-Z</button>
         </div>
     </form>
     <!-- <div class="wrap-menu-category">
@@ -80,10 +102,11 @@ if (isset($_POST['order'])) {
         }
 
         ?>
-        <?php foreach ($menus as $menu) : ?>
+        <?php
+        foreach ($menus as $menu) : ?>
             <div class="card">
                 <div class="card-img">
-                    <!-- <img src="https://source.unsplash.com/300x300/?food" alt="" /> -->
+                    <img src="<?= base_url("assets/upload/$menu[menu_img]") ?>" width="300" height="300" alt="" />
                 </div>
                 <div class="card-content">
                     <div class="card-title">
