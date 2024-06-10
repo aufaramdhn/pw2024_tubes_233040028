@@ -7,6 +7,7 @@ $orders = dynamic_join(
     ['menu.menu_id = menu_order.menu_id', 'user.user_id = menu_order.user_id'],
     'INNER',
     'menu_order.trx_id, 
+    max(user.user_name) as fullname,
     menu.menu_name, 
     menu.menu_price, 
     menu_order.qty_order, 
@@ -22,6 +23,7 @@ $grand_total = 0;
 
 foreach ($orders as $order) {
     $grand_total += $order['total'];
+    $fullname = $order['fullname'];
 }
 
 ?>
@@ -43,7 +45,7 @@ foreach ($orders as $order) {
         </div>
         <div class="user-info">
             <div class="info">
-                <h4>Name : <span><?= $_SESSION['fullname'] ?></span> </h4>
+                <h4>Name : <span><?= $fullname ?></span> </h4>
             </div>
             <div class="info">
                 <button class="btn" onclick="document.location.href = 'index.php'" style="float: left; margin:20px 0;">Back</button>
@@ -67,14 +69,14 @@ foreach ($orders as $order) {
                     <tr>
                         <td><?= $id++ ?></td>
                         <td><?= $order['menu_name'] ?></td>
-                        <td>Rp. <?= number_format($order['menu_price']) ?></td>
+                        <td>Rp. <?= number_format($order['menu_price'], '0', '.', '.') ?></td>
                         <td><?= $order['qty_order'] ?></td>
-                        <td>Rp. <?= number_format($order['total']) ?></td>
+                        <td>Rp. <?= number_format($order['total'], '0', '.', '.') ?></td>
                     </tr>
                 <?php endforeach ?>
                 <tr>
                     <td align="right" colspan="4">Grand Total</td>
-                    <td>Rp. <?= number_format($grand_total) ?></td>
+                    <td>Rp. <?= number_format($grand_total, '0', '.', '.') ?></td>
                 </tr>
             </tbody>
         </table>

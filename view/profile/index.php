@@ -56,6 +56,11 @@ $title = $currentPage['title'];
                 case 'review':
                     include('review.php');
                     break;
+
+                default:
+                    header("HTTP/1.0 404 Not Found");
+                    include('404.php');
+                    break;
             }
 
 

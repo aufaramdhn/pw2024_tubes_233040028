@@ -6,13 +6,6 @@ if (isset($_POST['register'])) {
     $login = register($_POST);
 }
 
-// if (isset($_SESSION['message'])) {
-//     echo "<script>
-//         alert('$_SESSION[message]');
-//     </script>";
-//     unset($_SESSION['message']);
-// }
-
 ?>
 
 <!DOCTYPE html>
@@ -21,12 +14,28 @@ if (isset($_POST['register'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../assets/css/login-register.css">
+    <title>Register | BowlRealm</title>
+    <link rel="icon" type="image/x-icon" href="<?= base_url('assets/picture/logo.png') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/login-register.css') ?>">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 
 </head>
 
 <body>
+
+    <?php
+    if (isset($_SESSION['message'])) { ?>
+        <div class="alert">
+            <div class="alert-content">
+                <span id="alert"><?= $_SESSION['message'] ?></span>
+                <button id="close-alert" onclick="closeAlert()"><i class="ri-close-large-line"></i></button>
+            </div>
+        </div>
+        </script>
+    <?php
+    }
+    unset($_SESSION['message']);
+    ?>
     <div class="wrap">
         <div class="wrap-img">
             <img src="../assets/picture/login.jpg" alt="">
@@ -39,6 +48,10 @@ if (isset($_POST['register'])) {
                 <h2>Register</h2>
             </div>
             <form action="" method="POST">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" name="fullname" id="fullname">
+                </div>
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username">
@@ -65,6 +78,7 @@ if (isset($_POST['register'])) {
             </div>
         </div>
     </div>
+    <script src="<?= base_url('assets/js/script.js') ?>"></script>
 </body>
 
 </html>

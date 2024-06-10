@@ -1,6 +1,5 @@
 <?php
 
-
 include('../function.php');
 
 if ($_SESSION['role'] != 'admin') {
@@ -25,17 +24,16 @@ if ($_SESSION['role'] != 'admin') {
 
 <body>
 
-    <?php include(BASE_PATH . '__backend\\page.php'); ?>
+    <?php include('page.php'); ?>
 
-    <?php include(BASE_PATH . '__backend\\layouts\\header.php'); ?>
+    <?php include('layouts/header.php'); ?>
 
     <?php
-
     if (isset($_SESSION['message'])) { ?>
         <div class="alert">
             <div class="alert-content">
                 <span id="alert"><?= $_SESSION['message'] ?></span>
-                <button><i class="ri-close-large-line"></i></button>
+                <button id="close-alert" onclick="closeAlert()"><i class="ri-close-large-line"></i></button>
             </div>
         </div>
         </script>
@@ -44,9 +42,9 @@ if ($_SESSION['role'] != 'admin') {
     } ?>
 
 
-    <?php include(BASE_PATH . '__backend\\routing.php'); ?>
+    <?php include('routing.php'); ?>
 
-    <?php include(BASE_PATH . '__backend\\layouts\\footer.php'); ?>
+    <?php include('layouts/footer.php'); ?>
 
     <script src="<?= base_url('__backend/assets/script.js') ?>"></script>
 

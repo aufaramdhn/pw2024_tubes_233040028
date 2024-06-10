@@ -6,6 +6,12 @@ if (isset($_POST['save'])) {
     $password = $_POST['password'];
     $cPassword = $_POST['cPassword'];
 
+    if (strlen($password) < 5) {
+        $_SESSION['message'] = 'Password must have greater than 5 character';
+        header("Location: index.php?page=profile_user&subpage=security");
+        exit;
+    }
+
     if ($password == $cPassword) {
 
         $array_update = [

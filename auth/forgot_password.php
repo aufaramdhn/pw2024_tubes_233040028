@@ -21,25 +21,20 @@ if (isset($_POST['forgot'])) {
 
             update_data('user', $array_update, $condition);
 
+            $_SESSION['message'] = "Password berhasil diubah!";
             header('Location: login.php');
+            exit;
         } else {
-            echo "<script>
-                alert('Password tidak sama!');
-            </script>";
+            $_SESSION['message'] = "Password tidak sama!";
+            header('Location: forgot_password.php');
+            exit;
         }
     } else {
-        echo "<script>
-            alert('Username tidak ditemukan!');
-        </script>";
+        $_SESSION['message'] = "Username tidak ditemukan!";
+        header('Location: forgot_password.php');
+        exit;
     }
 }
-
-// if (isset($_SESSION['message'])) {
-//     echo "<script>
-//         alert('$_SESSION[message]');
-//     </script>";
-//     unset($_SESSION['message']);
-// }
 
 ?>
 
@@ -49,11 +44,26 @@ if (isset($_POST['forgot'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../assets/css/login-register.css">
+    <title>Forgot Password | BowlRealm</title>
+    <link rel="icon" type="image/x-icon" href="<?= base_url('assets/picture/logo.png') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/login-register.css') ?>">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
 <body>
+    <?php
+    if (isset($_SESSION['message'])) { ?>
+        <div class="alert">
+            <div class="alert-content">
+                <span id="alert"><?= $_SESSION['message'] ?></span>
+                <button id="close-alert" onclick="closeAlert()"><i class="ri-close-large-line"></i></button>
+            </div>
+        </div>
+        </script>
+    <?php
+    }
+    unset($_SESSION['message']);
+    ?>
     <div class="wrap">
         <div class="wrap-img">
             <img src="../assets/picture/login.jpg" alt="">
@@ -85,6 +95,7 @@ if (isset($_POST['forgot'])) {
             </div>
         </div>
     </div>
+    <script src="<?= base_url('assets/js/script.js') ?>"></script>
 </body>
 
 </html>

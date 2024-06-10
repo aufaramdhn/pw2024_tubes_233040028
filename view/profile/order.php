@@ -14,12 +14,18 @@ $orders = dynamic_join(
 
 );
 
-$grand_total = 0;
 
 ?>
 
 <section id="order">
     <div class="wrap-order">
+        <?php
+
+        if (empty($orders)) :
+            echo "<h1 style='text-align:center; margin-top:50px;'>You haven't made any orders yet</h1>";
+        endif
+
+        ?>
         <?php foreach ($orders as $order) : ?>
             <?php  ?>
             <div class="card">

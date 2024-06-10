@@ -52,4 +52,7 @@ table tr th {
   footer {
     display: none;
   }
+  .alert {
+    display: none;
+  }
 }

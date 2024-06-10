@@ -12,6 +12,7 @@ if (isset($_POST['submit'])) {
     insert_data('menu', $array_insert);
 
     header('Location: index.php?page=menu');
+    exit;
 }
 
 
@@ -25,18 +26,18 @@ if (isset($_POST['submit'])) {
 <form action="" method="POST" enctype="multipart/form-data">
     <div class="flex wrap-form">
         <div class="add-img">
-            <img src="" class="img-preview" width="430" height="430">
+            <img src="<?= base_url('assets/upload/nophoto.jpg') ?>" class="img-preview" alt="image">
             <input type="file" name="image" id="image" class="image" onchange="previewImage()">
             <label class="btn" for="image">Upload Image</label>
         </div>
         <div class="col">
             <div class="form-group">
                 <label for="menu_name">Menu Name</label>
-                <input type="text" name="menu_name" id="menu_name">
+                <input type="text" name="menu_name" id="menu_name" placeholder="Enter food/drink name">
             </div>
             <div class="form-group">
                 <label for="menu_price">Menu Price</label>
-                <input type="number" name="menu_price" id="menu_price">
+                <input type="number" name="menu_price" id="menu_price" placeholder="Enter food/drink price">
             </div>
         </div>
     </div>

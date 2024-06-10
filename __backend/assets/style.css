@@ -124,6 +124,10 @@ table tr th {
   z-index: 1000;
 }
 
+.alert.hidden {
+  display: none;
+}
+
 .alert-content {
   background-color: white;
   padding: 20px;
@@ -139,6 +143,32 @@ table tr th {
   border: none;
   cursor: pointer;
   background-color: transparent;
+}
+
+#error .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.error {
+  text-align: center;
+  color: black;
+  font-size: 14px;
+}
+
+.error h1 {
+  font-size: 10rem;
+}
+
+.error h2 {
+  font-size: 2rem;
+}
+
+.error p {
+  margin: 10px 0;
+  font-size: 1.2rem;
 }
 
 /* End Custom CSS */
@@ -170,6 +200,12 @@ header {
   align-items: center;
   padding: 12px 25px;
   color: white;
+}
+
+.topbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .topbar-img {
@@ -210,13 +246,7 @@ header {
 }
 
 .nav-toggle {
-  position: absolute;
-  top: 45%;
-  right: -22px;
-}
-
-.nav-toggle {
-  background-color: rgba(116, 119, 122);
+  background-color: transparent;
   color: #fff;
   border: none;
   padding: 8px;
@@ -291,13 +321,18 @@ header {
 
 /* User */
 
+.add-data {
+  display: flex;
+  justify-content: end;
+  margin-top: 20px;
+}
+
 .add-data a {
   background-color: #3498db;
   color: #fff;
   border-radius: 4px;
   padding: 10px 20px;
   text-decoration: none;
-  float: right;
   margin-bottom: 10px;
 }
 
@@ -317,6 +352,11 @@ header {
   display: flex;
   flex: 0.4;
   flex-direction: column;
+}
+
+.add-img img {
+  width: 430px;
+  height: 430px;
 }
 
 .add-img label {
@@ -343,6 +383,7 @@ header {
 
 .wrap-dashboard {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -384,3 +425,44 @@ header {
 }
 
 /* END DASHBOARD */
+
+@media screen and (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .topbar {
+    z-index: 1000;
+  }
+  .sidebar {
+    /* opacity: 0; */
+    display: none;
+    transform: translateX(-100%);
+  }
+  .sidebar.slide {
+    display: flex;
+    height: 100vh;
+    position: fixed;
+    z-index: 100;
+    transform: translateX(0);
+    top: 0;
+    width: 289px;
+    /* opacity: 1; */
+  }
+  .nav-title.hide {
+    display: inline;
+  }
+  .flex {
+    flex-direction: column;
+  }
+
+  .col {
+    flex: 1;
+  }
+
+  .add-img img {
+    width: 100%;
+    height: 370px;
+  }
+}

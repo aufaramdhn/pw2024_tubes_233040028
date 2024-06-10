@@ -2,11 +2,6 @@
 
 $menus = query("SELECT * FROM menu");
 
-if (isset($_POST['search'])) {
-    $menus = live_search_menu('menu', $_POST['keyword']);
-}
-
-
 if (isset($_POST['order'])) {
 
     $menu_id = $_POST['order'];
@@ -71,6 +66,15 @@ if ($_POST['filter'] == 'ramen' || $_POST['filter'] == 'donburi' || $_POST['filt
         <h1>Menu Kami</h1>
         <p>Pilih menu makanan favorit Anda dan nikmati makanan lezat yang kami sediakan!</p>
     </div>
+
+    <?php
+
+    if (isset($_POST['search'])) {
+        $keyword = $_POST['keyword'];
+        $menus = live_search_menu("SELECT * FROM menu WHERE menu_name LIKE '%$keyword%' OR menu_ctg LIKE '%$keyword%' OR menu_price LIKE '%$keyword%'");
+    }
+
+    ?>
     <form action="" method="POST">
         <div class="search-menu">
             <input id="search" type="text" placeholder="Cari menu makanan" name="keyword" class="keyword">
@@ -84,16 +88,6 @@ if ($_POST['filter'] == 'ramen' || $_POST['filter'] == 'donburi' || $_POST['filt
             <button name="filter" value="urutkan" class="btn-ctg <?= $_POST['filter'] === 'urutkan' ? 'active' : '' ?>">A-Z</button>
         </div>
     </form>
-    <!-- <div class="wrap-menu-category">
-        <label for="All">All</label>
-        <input type="checkbox" name="" id="All" value="All">
-        <label for="Pizza">Pizza</label>
-        <input type="checkbox" name="" id="Pizza" value="Pizza">
-        <label for="Burger">Burger</label>
-        <input type="checkbox" name="" id="Burger" value="Burger">
-        <label for="Fried">Fried</label>
-        <input type="checkbox" name="" id="Fried" value="Fried">
-    </div> -->
     <div class="wrap-menu wrap-menu-page">
         <?phP
 
@@ -111,7 +105,7 @@ if ($_POST['filter'] == 'ramen' || $_POST['filter'] == 'donburi' || $_POST['filt
                 <div class="card-content">
                     <div class="card-title">
                         <h3><?= $menu['menu_name'] ?></h3>
-                        <span>Rp. <?= number_format($menu['menu_price']) ?></span>
+                        <span>Rp. <?= number_format($menu['menu_price'], '0', '.', '.') ?></span>
                     </div>
                     <?php if (isset($_SESSION['login'])) { ?>
                         <form action="" method="POST">

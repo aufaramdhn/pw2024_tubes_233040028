@@ -13,6 +13,8 @@ if (isset($_POST['submit'])) {
     ];
 
     insert_data('user', $array_insert);
+    header('Location: index.php?page=user');
+    exit;
 }
 
 
@@ -27,30 +29,39 @@ if (isset($_POST['submit'])) {
 <form action="" method="POST" enctype="multipart/form-data">
     <div class="flex wrap-form">
         <div class="add-img">
-            <img src="" class="img-preview" width="430" height="430">
+            <img src="<?= base_url('assets/upload/nophoto.jpg') ?>" class="img-preview">
             <input type="file" name="image" id="image" class="image" onchange="previewImage()">
             <label class="btn" for="image">Upload Image</label>
         </div>
         <div class="col">
             <div class="form-group">
                 <label for="fullname">Full Name</label>
-                <input type="text" name="fullname" id="fullname">
+                <input type="text" name="fullname" id="fullname" placeholder="Enter fullname">
             </div>
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username">
+                <input type="text" name="username" id="username" placeholder="Enter username">
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password">
+                <input type="password" name="password" id="password" placeholder="Enter password">
             </div>
             <div class="form-group">
-                <label for="email">email</label>
-                <input type="email" name="email" id="email">
+                <label for="email">Email Address</label>
+                <input type="email" name="email" id="email" placeholder="Enter email">
             </div>
             <div class="form-group">
-                <label for="role_id">roleid</label>
-                <input type="text" name="role_id" id="role_id">
+                <label for="role_id">Role</label>
+                <select name="role_id" id="role_id">
+                    <?php
+
+                    $role = array_query("SELECT * FROM role");
+                    foreach ($role as $r) :
+
+                    ?>
+                        <option value="<?= $r['role_id'] ?>"><?= $r['role_name'] ?></option>
+                    <?php endforeach; ?>
+                </select>
             </div>
         </div>
     </div>

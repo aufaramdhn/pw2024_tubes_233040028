@@ -2,7 +2,10 @@
 
 require_once('function.php');
 
-$users = array_query("SELECT * FROM user WHERE user_id = '$_SESSION[user_id]'");
+if (isset($_SESSION['login'])) {
+    $users = array_query("SELECT * FROM user WHERE user_id = '$_SESSION[user_id]'");
+}
+
 
 ?>
 
@@ -24,11 +27,11 @@ $users = array_query("SELECT * FROM user WHERE user_id = '$_SESSION[user_id]'");
 
 <body>
 
-    <?php include(BASE_PATH . 'layouts\\header.php'); ?>
+    <?php include('layouts/header.php'); ?>
 
-    <?php include(BASE_PATH . 'apps\\routing_frontend.php'); ?>
+    <?php include('apps/routing_frontend.php'); ?>
 
-    <?php include(BASE_PATH . 'layouts\\footer.php'); ?>
+    <?php include('layouts/footer.php'); ?>
 
     <script src="<?= base_url('assets/js/script.js') ?>"></script>
     <script src="<?= base_url('assets/js/live_search.js') ?>"></script>

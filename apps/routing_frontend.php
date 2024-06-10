@@ -35,4 +35,9 @@ switch ($page) {
     case 'logout':
         include('auth/logout.php');
         break;
+
+    default:
+        header("HTTP/1.0 404 Not Found");
+        include('view/404.php');
+        break;
 }

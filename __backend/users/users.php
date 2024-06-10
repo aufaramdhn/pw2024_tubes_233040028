@@ -4,7 +4,7 @@
 $users = query("SELECT * FROM user");
 
 if (isset($_GET['user_id'])) :
-    delete_data('user', ['user_id' => $_GET['user_id']]);
+
 endif;
 
 ?>
@@ -42,7 +42,6 @@ endif;
                 <td><?= $user['username'] ?></td>
                 <td><?= $user['user_email'] ?></td>
                 <td align="center">
-                    <a class="btn-small btn-danger" href="index.php?page=edit_user&user_id=<?= $user['user_id'] ?>">edit</a>
                     <a class="btn-small btn-danger" href="index.php?page=users&user_id=<?= $user['user_id'] ?>">Delete</a>
                 </td>
             </tr>

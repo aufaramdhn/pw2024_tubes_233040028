@@ -11,7 +11,10 @@ if (isset($_GET['page'])) {
 
 <header class="topbar">
     <div class="topbar-logo">
-        <h3>Admin Page</h3>
+        <button class="toggle nav-toggle" id="navToggle">
+            <i class="ri-align-left"></i>
+        </button>
+        <img src="<?= base_url('assets/picture/logo.png') ?>" width="55" height="55" alt="">
     </div>
     <div class="topbar-img">
         <h3><?= $_SESSION['fullname'] ?></h3>
@@ -19,7 +22,7 @@ if (isset($_GET['page'])) {
     </div>
 </header>
 <div class="wrap">
-    <div class="sidebar">
+    <div class="sidebar none">
         <div class="nav-list">
             <a href="<?= base_url('index.php') ?>">
                 <i class="ri-home-6-line"></i>
@@ -52,13 +55,10 @@ if (isset($_GET['page'])) {
                 </span>
             </a>
         </div>
-        <a href="index.php?page=logout" class="logout">
+        <a href="logout.php" class="logout">
             <i class="ri-logout-box-line"></i>
             <span class="nav-title">Logout</span>
         </a>
-        <button class="nav-toggle" id="navToggle">
-            <i class="ri-arrow-left-s-line"></i>
-        </button>
     </div>
     <div class="wrap-content">
         <div class="content">

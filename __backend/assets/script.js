@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (sideBar && navToggle && arrow && titles) {
     navToggle.addEventListener("click", () => {
       sideBar.classList.toggle("slide");
-      arrow.classList.toggle("ri-arrow-right-s-line");
+      arrow.classList.toggle("ri-align-right");
 
       titles.forEach((title) => {
         title.classList.toggle("hide");
@@ -35,4 +35,9 @@ function previewImage() {
   oFReader.onload = function (oFREvent) {
     imgPreview.src = oFREvent.target.result;
   };
+}
+
+function closeAlert() {
+  const AlertClose = document.querySelector(".alert");
+  AlertClose.classList.add("hidden");
 }

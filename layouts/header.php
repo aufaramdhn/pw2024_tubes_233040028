@@ -6,6 +6,8 @@ if (isset($_SESSION['user_id'])) {
     $cart = [];
 }
 
+$nav = isset($_GET['page']) ? $_GET['page'] : 'index';
+
 ?>
 
 <nav class="container">
@@ -15,8 +17,8 @@ if (isset($_SESSION['user_id'])) {
         </div>
         <div class="navbar">
             <ul>
-                <li><a href="<?= base_url('index.php') ?>">Home</a></li>
-                <li><a href="<?= base_url('index.php?page=menu') ?>">Menu</a></li>
+                <li><a class="<?= $nav === 'index' ? 'active' : '' ?>" href="<?= base_url('index.php') ?>">Home</a></li>
+                <li><a class="<?= $nav === 'menu' ? 'active' : '' ?>" href="<?= base_url('index.php?page=menu') ?>">Menu</a></li>
             </ul>
         </div>
         <div class="wrap-toggle">
@@ -59,7 +61,6 @@ if (isset($_SESSION['user_id'])) {
 </nav>
 <main>
     <?php
-
     if (isset($_SESSION['message'])) { ?>
         <div class="alert">
             <div class="alert-content">

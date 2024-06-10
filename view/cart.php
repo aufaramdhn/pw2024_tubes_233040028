@@ -94,6 +94,7 @@ if (isset($_POST['checkout'])) {
     ];
 
     delete_data('cart', $conditions);
+    $_SESSION['message'] = 'Your order has been successfully placed';
 
     header('Location: index.php?page=receipt&trx_id=' . $rand);
     exit;
@@ -123,7 +124,7 @@ if (isset($_POST['checkout'])) {
                             <div class="wrap-cart-text">
                                 <div class="wrap-cart-title">
                                     <h3><?= $cart['menu_name'] ?></h3>
-                                    <p>Rp. <?= number_format($cart['menu_price']) ?></p>
+                                    <p>Rp. <?= number_format($cart['menu_price'], '0', '.', '.') ?></p>
                                 </div>
                             </div>
                             <div class="wrap-cart-qty">
@@ -139,7 +140,7 @@ if (isset($_POST['checkout'])) {
                 <div class="wrap-total">
                     <div class="total">
                         <h3>Total</h3>
-                        <p>Rp. <?= $grand_total ?></p>
+                        <p>Rp. <?= number_format($grand_total, '0', '.', '.') ?></p>
                     </div>
 
                     <button type="submit" class="btn btn-checkout" name="checkout">Checkout</button>

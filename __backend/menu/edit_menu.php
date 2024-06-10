@@ -26,6 +26,7 @@ if (isset($_POST['submit'])) {
     update_data('menu', $array_update, $conditions);
 
     header('Location: index.php?page=menu');
+    exit;
 }
 
 
@@ -39,7 +40,7 @@ if (isset($_POST['submit'])) {
 <form action="" method="POST" enctype="multipart/form-data">
     <div class="flex wrap-form">
         <div class="add-img">
-            <img src="<?= base_url("assets/upload/$menu[menu_img]") ?>" class="img-preview" width="430" height="430">
+            <img src="<?= base_url("assets/upload/$menu[menu_img]") ?>" class="img-preview">
             <input type="text" name="old_img" style="display: none;" value="<?= $menu['menu_img'] ?>">
             <input type="file" name="image" id="image" class="image" onchange="previewImage()">
             <label class="btn" for="image">Upload Image</label>

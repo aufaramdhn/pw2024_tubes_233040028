@@ -2,7 +2,6 @@
 
 $menus = query("SELECT * FROM menu");
 
-
 ?>
 
 <div class="div">
@@ -32,10 +31,10 @@ $menus = query("SELECT * FROM menu");
                 <td><?= $id++ ?></td>
                 <td align="center"><img src="<?= base_url("assets/upload/$menu[menu_img]") ?>" class="img-preview" width="120" height="120"></td>
                 <td><?= $menu['menu_name'] ?></td>
-                <td>Rp. <?= number_format($menu['menu_price']) ?></td>
+                <td>Rp. <?= number_format($menu['menu_price'], '0', '.', '.') ?></td>
                 <td align="center">
                     <a class="btn-small btn-warning" href="index.php?page=edit_menu&menu_id=<?= $menu['menu_id'] ?>">Edit</a>
-                    <a class="btn-small btn-danger" href="index.php?page=delete_menu&menu_id=<?= $menu['menu_id'] ?>">Delete</a>
+                    <a class="btn-small btn-danger" href="index.php?page=menu&menu_id=<?= $menu['menu_id'] ?>">Delete</a>
                 </td>
             </tr>
         <?php endforeach ?>

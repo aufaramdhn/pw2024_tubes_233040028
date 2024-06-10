@@ -20,8 +20,8 @@ switch ($page) {
         include('users/add_user.php');
         break;
 
-    case 'edit_user':
-        include('users/edit_user.php');
+    case 'delete_user':
+        include('users/delete_user.php');
         break;
 
     case 'menu':
@@ -44,11 +44,12 @@ switch ($page) {
         include('orders/orders.php');
         break;
 
-    case 'add_order':
-        include('orders/add_order.php');
+    case 'detail_order':
+        include('orders/detail_order.php');
         break;
 
-    case 'logout';
-        include('logout.php');
+    default:
+        header("HTTP/1.0 404 Not Found");
+        include('404.php');
         break;
 }

@@ -15,11 +15,15 @@
     <div class="wrap-menu-count">
         <div class="food-menu">
             <h3>3+</h3>
-            <p>Menu Makanan</p>
+            <p>Food Menu</p>
+        </div>
+        <div class="food-menu">
+            <h3>3+</h3>
+            <p>Drink Menu</p>
         </div>
         <div class="experience">
-            <h3>3+</h3>
-            <p>Pengalaman Pelayanan</p>
+            <h3>5+</h3>
+            <p>Service Experience</p>
         </div>
     </div>
 </section>
@@ -114,7 +118,7 @@ if (isset($_POST['order'])) {
                     <div class="card-content">
                         <div class="card-title">
                             <h3><?= $menu['menu_name'] ?></h3>
-                            <span>Rp. <?= number_format($menu['menu_price']) ?></span>
+                            <span>Rp. <?= number_format($menu['menu_price'], '0', '.', '.') ?></span>
                         </div>
                         <?php if (isset($_SESSION['login'])) { ?>
                             <form action="" method="POST">
@@ -127,7 +131,6 @@ if (isset($_POST['order'])) {
                 </div>
             <?php endforeach; ?>
         </div>
-        <!-- <a class="btn btn-all-menu" href="index.php?page=menu">See all menu</a> -->
     </div>
 
 </section>
