@@ -171,6 +171,35 @@ table tr th {
   font-size: 1.2rem;
 }
 
+.wrap-search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.search {
+  display: flex;
+  gap: 5px;
+}
+
+.search input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.btn-search {
+  padding: 10px 20px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #3498db;
+  text-align: center;
+}
+
 /* End Custom CSS */
 
 .wrap {

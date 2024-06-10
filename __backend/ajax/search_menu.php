@@ -1,28 +1,12 @@
 <?php
 
-$menus = query("SELECT * FROM menu");
+require_once('../../function.php');
 
-if (isset($_POST['search'])) {
-    $menus = live_search_menu("SELECT * FROM menu WHERE menu_name LIKE '%$_POST[keyword]%' or menu_price LIKE '%$_POST[keyword]%' or menu_ctg LIKE '%$_POST[keyword]%'");
-}
+$keyword = $_GET['keyword'];
+
+$menus = live_search_menu("SELECT * FROM menu WHERE menu_name LIKE '%$keyword%' OR menu_ctg LIKE '%$keyword%' OR menu_price LIKE '%$keyword%'");
 
 ?>
-
-<div class="div">
-    <a href="">Dashboard</a> / Menus
-</div>
-
-<div class="wrap-search">
-    <div class="add-data">
-        <a href="index.php?page=add_menu">Add Data</a>
-    </div>
-    <form action="" method="POST">
-        <div class="search">
-            <input type="text" name="keyword" id="keyword" placeholder="Search Menu" class="keyword-menu">
-            <button type="submit" name="search" class="btn-search">Search</button>
-        </div>
-    </form>
-</div>
 
 <table class="table-menu">
     <thead>
@@ -52,4 +36,3 @@ if (isset($_POST['search'])) {
         <?php endforeach ?>
     </tbody>
 </table>
-<script src="<?= base_url('__backend/assets/live_search_menu.js') ?>"></script>

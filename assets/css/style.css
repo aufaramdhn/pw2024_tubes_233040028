@@ -988,3 +988,9 @@ footer {
   align-items: center;
   gap: 20px;
 }
+
+@media print {
+  .alert {
+    display: none;
+  }
+}

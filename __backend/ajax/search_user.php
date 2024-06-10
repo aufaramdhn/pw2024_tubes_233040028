@@ -1,33 +1,12 @@
 <?php
 
+require_once('../../function.php');
 
-$users = query("SELECT * FROM user");
+$keyword = $_GET['keyword'];
 
-if (isset($_GET['user_id'])) :
-
-endif;
-
-if (isset($_POST['search'])) {
-    $users = live_search_menu("SELECT * FROM user WHERE user_name LIKE '%$_POST[keyword]%' OR username LIKE '%$_POST[keyword]%' OR user_email LIKE '%$_POST[keyword]%'");
-}
+$users = live_search_menu("SELECT * FROM user WHERE user_name LIKE '%$keyword%' OR username LIKE '%$keyword%' OR user_email LIKE '%$keyword%'");
 
 ?>
-
-<div class="page">
-    <a href="index.php?page=index">Dashboard</a> / Users
-</div>
-
-<div class="wrap-search">
-    <div class="add-data">
-        <a href="index.php?page=add_user">Add Data</a>
-    </div>
-    <form action="" method="POST">
-        <div class="search">
-            <input type="text" name="keyword" id="keyword" placeholder="Search Menu" class="keyword-user">
-            <button type="submit" name="search" class="btn-search">Search</button>
-        </div>
-    </form>
-</div>
 
 <table class="table-user">
     <thead>
@@ -60,4 +39,3 @@ if (isset($_POST['search'])) {
         <?php endforeach ?>
     </tbody>
 </table>
-<script src="<?= base_url('__backend/assets/live_search_user.js') ?>"></script>

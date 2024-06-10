@@ -12,7 +12,6 @@ $pages = [
     'detail_order' => ['title' => 'Order Detail'],
     'edit_menu' => ['title' => 'Edit Menu'],
     'edit_user' => ['title' => 'Edit User'],
-    'edit_order' => ['title' => 'Edit Order'],
 ];
 
 $currentPage = isset($pages[$page]) ? $pages[$page] : $pages['index'];

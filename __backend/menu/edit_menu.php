@@ -17,6 +17,7 @@ if (isset($_POST['submit'])) {
 
     $array_update = [
         'menu_img' => $image,
+        'menu_ctg' => $_POST['menu_ctg'],
         'menu_name' => $_POST['menu_name'],
         'menu_price' => $_POST['menu_price'],
     ];
@@ -49,6 +50,10 @@ if (isset($_POST['submit'])) {
             <div class="form-group">
                 <label for="menu_name">Menu Name</label>
                 <input type="text" name="menu_name" id="menu_name" value="<?= $menu['menu_name'] ?>">
+            </div>
+            <div class="form-group">
+                <label for="menu_ctg">Menu Category</label>
+                <input type="text" name="menu_ctg" id="menu_ctg" value="<?= $menu['menu_ctg'] ?>">
             </div>
             <div class="form-group">
                 <label for="menu_price">Menu Price</label>

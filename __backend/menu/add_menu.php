@@ -5,6 +5,7 @@ if (isset($_POST['submit'])) {
 
     $array_insert = [
         'menu_img' => $_FILES['image'],
+        'menu_ctg' => $_POST['menu_ctg'],
         'menu_name' => $_POST['menu_name'],
         'menu_price' => $_POST['menu_price'],
     ];
@@ -34,6 +35,10 @@ if (isset($_POST['submit'])) {
             <div class="form-group">
                 <label for="menu_name">Menu Name</label>
                 <input type="text" name="menu_name" id="menu_name" placeholder="Enter food/drink name">
+            </div>
+            <div class="form-group">
+                <label for="menu_ctg">Menu Category</label>
+                <input type="text" name="menu_ctg" id="menu_ctg" placeholder="Enter food/drink category">
             </div>
             <div class="form-group">
                 <label for="menu_price">Menu Price</label>
