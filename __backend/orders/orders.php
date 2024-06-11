@@ -22,6 +22,10 @@ $orders = dynamic_join(
     <a href="index.php?page=index">Dashboard</a> / Orders
 </div>
 
+<div class="add-data">
+    <button class="btn" onclick="print()">Print</button>
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -31,7 +35,7 @@ $orders = dynamic_join(
             <th>Order Date</th>
             <th>Quantity</th>
             <th>Total Price</th>
-            <th>Action</th>
+            <th class="action">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -46,7 +50,7 @@ $orders = dynamic_join(
                 <td><?= $order['date'] ?></td>
                 <td><?= $order['qty'] ?></td>
                 <td>Rp. <?= number_format($order['price'], '0', '.', '.') ?></td>
-                <td align="center">
+                <td align="center" class="action">
                     <a href="index.php?page=detail_order&trx_id=<?= $order['trx_id'] ?>"> See More</a>
                 </td>
             </tr>

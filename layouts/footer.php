@@ -15,20 +15,16 @@
             </div>
             <div class="footer-menu">
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Services</a></li>
-                    <li><a href="">Menu</a></li>
-                    <li><a href="">Contact Us</a></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="index.php">Menu</a></li>
+
                 </ul>
             </div>
             <div class="footer-menu">
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Services</a></li>
-                    <li><a href="">Menu</a></li>
-                    <li><a href="">Contact Us</a></li>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="index.php">Menu</a></li>
+
                 </ul>
             </div>
             <div class="footer-contact">

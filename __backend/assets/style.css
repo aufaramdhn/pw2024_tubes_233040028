@@ -495,3 +495,30 @@ header {
     height: 370px;
   }
 }
+
+@media print {
+  .sidebar {
+    display: none;
+  }
+  .topbar {
+    display: none;
+  }
+  .wrap-search {
+    display: none;
+  }
+  .add-data {
+    display: none;
+  }
+  .btn {
+    display: none;
+  }
+  .page {
+    display: none;
+  }
+  .wrap-content {
+    overflow-y: hidden;
+  }
+  .action {
+    display: none;
+  }
+}

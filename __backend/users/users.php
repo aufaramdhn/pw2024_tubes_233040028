@@ -54,7 +54,7 @@ if (isset($_POST['search'])) {
                 <td><?= $user['username'] ?></td>
                 <td><?= $user['user_email'] ?></td>
                 <td align="center">
-                    <a class="btn-small btn-danger" href="index.php?page=delete_user&user_id=<?= $user['user_id'] ?>">Delete</a>
+                    <a onclick="return confirm('Are you sure want to delete this data?')" class="btn-small btn-danger" href="index.php?page=delete_user&user_id=<?= $user['user_id'] ?>">Delete</a>
                 </td>
             </tr>
         <?php endforeach ?>

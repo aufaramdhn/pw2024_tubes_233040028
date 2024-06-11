@@ -46,7 +46,7 @@ if (isset($_POST['search'])) {
                 <td>Rp. <?= number_format($menu['menu_price'], '0', '.', '.') ?></td>
                 <td align="center">
                     <a class="btn-small btn-warning" href="index.php?page=edit_menu&menu_id=<?= $menu['menu_id'] ?>">Edit</a>
-                    <a class="btn-small btn-danger" href="index.php?page=menu&menu_id=<?= $menu['menu_id'] ?>">Delete</a>
+                    <a onclick="return confirm('Are you sure want to delete this data?')" class="btn-small btn-danger" href="index.php?page=menu&menu_id=<?= $menu['menu_id'] ?>">Delete</a>
                 </td>
             </tr>
         <?php endforeach ?>
