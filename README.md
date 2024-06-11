@@ -35,4 +35,9 @@ BowlRealm adalah sebuah aplikasi pemesanan makanan online yang menyediakan berba
    username : frey
    password : 12345
 
+# Tech
+1. PHP
+2. CSS Native
+3. JavaScript
+
 Dengan BowlRealm Web, saya berharap dapat memenuhi kebutuhan dan keinginan para pecinta makanan, Selamat menikmati pengalaman kuliner Anda di BowlRealm Web!
