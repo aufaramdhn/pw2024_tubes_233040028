@@ -39,5 +39,6 @@ BowlRealm adalah sebuah aplikasi pemesanan makanan online yang menyediakan berba
 1. PHP
 2. CSS Native
 3. JavaScript
+4. MySQL
 
 Dengan BowlRealm Web, saya berharap dapat memenuhi kebutuhan dan keinginan para pecinta makanan, Selamat menikmati pengalaman kuliner Anda di BowlRealm Web!
