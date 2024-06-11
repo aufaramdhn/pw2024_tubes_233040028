@@ -13,7 +13,7 @@ Foodies Web adalah sebuah aplikasi pemesanan makanan online yang menyediakan ber
 2. Desain Responsif: Foodies Web dirancang untuk berfungsi dengan baik di berbagai perangkat, dari desktop hingga ponsel.
 3. Visual yang Menarik: Pengguna akan disuguhi tata letak yang menarik dan gambar yang menggugah selera.
 
-#Fitur
+# Fitur
 
 1. Terdapat CRUD pada bagian admin
 2. Live Search pada bagian admin & user
@@ -23,7 +23,7 @@ Foodies Web adalah sebuah aplikasi pemesanan makanan online yang menyediakan ber
 6. Sorting
 7. Mengurutkan data sesuai category
 
-#login
+# login
 
 1. login admin
    username : aufa
