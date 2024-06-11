@@ -18,9 +18,9 @@ Foodies Web adalah sebuah aplikasi pemesanan makanan online yang menyediakan ber
 1. Terdapat CRUD pada bagian admin
 2. Live Search pada bagian admin & user
 3. Upload image pada bagian admin & user
-4. Login dan Registrasi
-5. PDF Reporting
-6. Sorting
+4. Login dan Registrasi admin & user
+5. PDF Reporting bagian admin & user
+6. Sorting pada baigan user
 7. Mengurutkan data sesuai category
 
 # login
