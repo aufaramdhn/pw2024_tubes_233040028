@@ -36,7 +36,7 @@ BowlRealm adalah sebuah aplikasi pemesanan makanan online yang menyediakan berba
    password : 12345
 
 # Tech
-1. PHP
+1. PHP Native
 2. CSS Native
 3. JavaScript
 4. MySQL
