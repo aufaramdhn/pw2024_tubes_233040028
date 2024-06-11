@@ -1,6 +1,6 @@
 # Food Aplication
 
-Foodies Web adalah sebuah aplikasi pemesanan makanan online yang menyediakan berbagai menu masakan restoran. Website ini dibuat dengan desain yang simpel dan interaktif sehingga pengguna dapat leluasa menjelajahi website ini.
+BowlRealm adalah sebuah aplikasi pemesanan makanan online yang menyediakan berbagai menu masakan restoran. Website ini dibuat dengan desain yang simpel dan interaktif sehingga pengguna dapat leluasa menjelajahi website ini.
 
 # Ide
 
@@ -35,4 +35,4 @@ Foodies Web adalah sebuah aplikasi pemesanan makanan online yang menyediakan ber
    username : frey
    password : 12345
 
-Dengan Foodies Web, saya berharap dapat memenuhi kebutuhan dan keinginan para pecinta makanan, Selamat menikmati pengalaman kuliner Anda di Foodies Web!
+Dengan BowlRealm Web, saya berharap dapat memenuhi kebutuhan dan keinginan para pecinta makanan, Selamat menikmati pengalaman kuliner Anda di BowlRealm Web!
